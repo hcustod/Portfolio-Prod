@@ -1,5 +1,6 @@
 ---
-import SideNavbar from '../components/nav/SideNavbar.jsx'
+import BackgroundCanvas from '../components/background/BackgroundCanvas.jsx';
+import SideNavbar from '../components/nav/SideNavbar.jsx';
 ---
 
 <html lang="en">
@@ -11,7 +12,11 @@ import SideNavbar from '../components/nav/SideNavbar.jsx'
 		<title>Astro</title>
 	</head>
 	<body>
+
+		<BackgroundCanvas client:only="react" />
+
 		<SideNavbar client:load /> 
+		
 
 	</body>
 </html>
