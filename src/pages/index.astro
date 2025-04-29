@@ -1,6 +1,12 @@
 ---
+import '../styles/global.css';
+
 import BackgroundCanvas from '../components/background/BackgroundCanvas.jsx';
 import SideNavbar from '../components/nav/SideNavbar.jsx';
+import Home from '../components/home/Home.jsx';
+import Projects from '../components/projects/Projects.jsx';
+import About from '../components/about/About.jsx';
+import Experience from '../components/experience/Experience.jsx';
 ---
 
 <html lang="en">
@@ -16,7 +22,11 @@ import SideNavbar from '../components/nav/SideNavbar.jsx';
 		<BackgroundCanvas client:only="react" />
 
 		<SideNavbar client:load /> 
-		
+		<Home client:load />
+		<Projects client:load />
+		<About client:load />
+		<Experience client:load />
+
 
 	</body>
 </html>
