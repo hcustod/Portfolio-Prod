@@ -23,7 +23,10 @@ const HomeSection = () => {
   }, []);
 
   return (
-    <section id="home" className="w-full h-screen flex items-center justify-start px-24 pt-8 text-left relative">
+    <section
+      id="home"
+      className="w-full h-screen flex items-center justify-center px-4 md:px-12 text-left relative"
+    >
       <div className="max-w-3xl w-full bg-white/5 backdrop-blur-lg rounded-2xl p-12 shadow-[0_0_20px_rgba(0,255,255,0.15)] border border-white/10 animate-slideInFromLeft">
         <h1 className="text-5xl font-bold text-slate-100 mb-4 leading-tight">
           I'm{' '}
@@ -43,7 +46,6 @@ const HomeSection = () => {
           with a passion for building clean, scalable, and sustainable cloud infrastructure.
         </p>
 
-        {/* Social Icons */}
         <div className="flex gap-4 mt-10">
           <a href="https://www.linkedin.com/in/hcustod/" target="_blank" className="w-14 h-14 flex items-center justify-center rounded-full bg-white text-emerald-900 border-2 border-white transition-all duration-300 hover:bg-transparent hover:text-white hover:scale-110 hover:shadow-md">
             <FaLinkedin size={28} />
@@ -53,7 +55,6 @@ const HomeSection = () => {
           </a>
         </div>
 
-        {/* Call-to-Action Buttons */}
         <div className="flex flex-wrap gap-4 mt-10">
           <a href="#about" className="border-2 border-white text-emerald-900 bg-white px-6 py-3 rounded-full font-bold uppercase transition-all duration-300 hover:bg-transparent hover:text-white hover:scale-105">
             Read More
@@ -64,7 +65,6 @@ const HomeSection = () => {
         </div>
       </div>
 
-      {/* Slide In Animation */}
       <style>
         {`
           @keyframes slideInFromLeft {

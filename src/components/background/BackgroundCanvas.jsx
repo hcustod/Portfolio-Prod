@@ -134,6 +134,14 @@ const BackgroundCanvas = () => {
     const clock = new THREE.Clock();
     let timeElapsed = 0;
 
+    let scrollY = 0;
+
+    const onScroll = () => {
+      scrollY = window.scrollY;
+    }
+
+    window.addEventListener('scroll', onScroll);
+
     const animate = () => {
       requestAnimationFrame(animate);
       const delta = clock.getDelta();
@@ -178,7 +186,7 @@ const BackgroundCanvas = () => {
 
       const slowBreath = Math.sin(timeElapsed * 0.25) * 1.0;
       const subtleVariation = Math.sin(timeElapsed * 0.73) * 0.4;
-      camera.position.z = 30 + slowBreath + subtleVariation;
+      camera.position.z = 30 + slowBreath + subtleVariation + scrollY * 0.01;
 
       renderer.render(scene, camera);
     };
@@ -195,6 +203,7 @@ const BackgroundCanvas = () => {
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', onScroll);
       mountRef.current.removeChild(renderer.domElement);
       renderer.dispose();
     };
