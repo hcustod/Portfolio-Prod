@@ -1,63 +1,47 @@
 import React, { useState } from 'react';
-import {
-  FaHome,
-  FaProjectDiagram,
-  FaUser,
-  FaBriefcase,
-  FaGraduationCap,
-  FaCertificate,
-  FaEnvelope,
-  FaChevronLeft,
-  FaChevronRight,
-  FaBars,
-} from 'react-icons/fa';
 
-const navItems = [
-  { label: 'Home', icon: <FaHome />, href: '#home' },
-  { label: 'Projects', icon: <FaProjectDiagram />, href: '#projects' },
-  { label: 'About', icon: <FaUser />, href: '#about' },
-  { label: 'Experience', icon: <FaBriefcase />, href: '#experience' },
-  { label: 'Education', icon: <FaGraduationCap />, href: '#education' },
-  { label: 'Certifications', icon: <FaCertificate />, href: '#certifications' },
-  { label: 'Contact', icon: <FaEnvelope />, href: '#contact' },
-];
-
-const SideNavbar = () => {
+const SideNavbar = ({ logo }) => {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleSidebar = () => setCollapsed(prev => !prev);
   const toggleMobileMenu = () => setMobileMenuOpen(prev => !prev);
 
+  const navItems = [
+    { label: 'Home', icon: <i className="fa fa-home" />, href: '#home' },
+    { label: 'Projects', icon: <i className="fa fa-diagram-project" />, href: '#projects' },
+    { label: 'About', icon: <i className="fa fa-user" />, href: '#about' },
+    { label: 'Experience', icon: <i className="fa fa-briefcase" />, href: '#experience' },
+    { label: 'Education', icon: <i className="fa fa-graduation-cap" />, href: '#education' },
+    { label: 'Certifications', icon: <i className="fa fa-certificate" />, href: '#certifications' },
+    { label: 'Contact', icon: <i className="fa fa-envelope" />, href: '#contact' },
+  ];
+
   return (
     <>
-      {/* Hamburger button (mobile only) */}
       <button
         className="md:hidden fixed top-4 left-4 z-50 text-white text-2xl bg-white/10 border border-white/20 rounded-lg p-2 backdrop-blur-md"
         onClick={toggleMobileMenu}
       >
-        <FaBars />
+        <i className="fa fa-bars" />
       </button>
 
-      {/* Sidebar */}
       <div className={`fixed top-0 left-0 z-40 h-full transition-all duration-300
         bg-white/7 backdrop-blur-sm shadow-lg border-r border-white/10
         ${mobileMenuOpen ? 'w-48' : collapsed ? 'w-16' : 'w-48'} 
         ${!mobileMenuOpen && 'hidden md:block'}`}
       >
-        
-        {/* Collapse Button (desktop only) */}
         {!mobileMenuOpen && (
           <div className="flex justify-end px-2 pb-2 pt-5">
             <button
               onClick={toggleSidebar}
               className="text-white hover:scale-110 transition-transform"
             >
-              {collapsed ? <FaChevronRight /> : <FaChevronLeft />}
+              {collapsed ? <i className="fa fa-chevron-right" /> : <i className="fa fa-chevron-left" />}
             </button>
           </div>
         )}
-        {/* Logo */}
+
         <div className="flex justify-center py-6">
           <a
             href="#home"
@@ -65,14 +49,15 @@ const SideNavbar = () => {
             title="Home"
           >
             <img
-              src="/assets/logo.svg" // replace with your actual logo
+              src={logo}
               alt="Logo"
-              className={`transition-all duration-300 ${collapsed ? 'w-8 h-8' : 'w-12 h-12'}`}
+              width={collapsed ? 32 : 48}
+              height={collapsed ? 32 : 48}
+              className="rounded-full shadow-md"
             />
           </a>
         </div>
 
-        {/* Navigation Items */}
         <ul className="flex flex-col items-center mt-4 space-y-4">
           {navItems.map((item, index) => (
             <li key={index} className="w-full group">

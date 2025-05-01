@@ -9,6 +9,70 @@ import Experience from '../components/experience/Experience.jsx';
 import Education from '../components/education/Education.jsx';
 import Certifications from '../components/certifications/Certifications.jsx';
 import Contact from '../components/contact/Contact.jsx';
+
+// Image preprocessing for astro 
+import { getImage } from 'astro:assets';
+import inteleradLogo from '../assets/experienceLogos/intelerad-logo.jpeg';
+import bdsrLogo from '../assets/experienceLogos/bdsr-logo-final.png';
+import telusLogo from '../assets/experienceLogos/Telus-Logo.png';
+import logoSvg from '../assets/myLogo/logo.jpg';
+
+
+const experienceImages = {
+  intelerad: await getImage({ src: inteleradLogo, width: 64 }),
+  bdsr: await getImage({ src: bdsrLogo, width: 64 }),
+  telus: await getImage({ src: telusLogo, width: 64 })
+};
+
+const experiences = [
+  {
+    company: "Bohrium Data & Security Research",
+    role: "Assistant Developer",
+    date: "Sept 2024 – Present | Toronto, ON",
+    logo: experienceImages.bdsr.src,
+    link: "#",
+    points: [
+      "Led PostgreSQL upgrades to 13+ ensuring stable migrations.",
+      "Containerized CMS websites with automated CI/CD.",
+      "Built disaster recovery and backup strategies.",
+      "Weekly client meetings to align project goals.",
+      "Tools: PostgreSQL, Sqitch, Docker, GCP, Git, Java, Bash"
+    ]
+  },
+  {
+    company: "Intelerad",
+    role: "System Technology Specialist",
+    date: "Jan 2024 – Sept 2024 | Toronto, ON",
+    logo: experienceImages.intelerad.src,
+    link: "https://www.intelerad.com/en/",
+    points: [
+      "Managed RHEL servers for critical PACS Radiology Systems.",
+      "Maintained HL7/DICOM services and security policies.",
+      "Administered Sybase and PostgreSQL healthcare databases.",
+      "Resolved SLA-priority production issues swiftly.",
+      "Tools: RHEL, PostgreSQL, Sybase, HL7, Bash, IPTables, DICOM"
+    ]
+  },
+  {
+    company: "Telus",
+    role: "Developer Analyst",
+    date: "May 2022 – Aug 2023 | Montreal, QC",
+    logo: experienceImages.telus.src,
+    link: "https://www.telus.com",
+    points: [
+      "Supported GCP Cloud Storage and Database services.",
+      "Authored documentation reducing incident escalations.",
+      "Troubleshot networking, storage, and devops issues.",
+      "Collaborated cross-team for customer-impact fixes.",
+      "Tools: GCP, Bash, Networking, Jira, Git"
+    ]
+  },
+];
+
+// logo image preprocessing
+const logo = await getImage({ src: logoSvg, width: 64 }); // or 48/32 if needed
+
+
 ---
 
 <html lang="en">
@@ -24,11 +88,11 @@ import Contact from '../components/contact/Contact.jsx';
 
 		<BackgroundCanvas client:only="react" />
 
-		<SideNavbar client:load /> 
+		<SideNavbar logo={logo.src} client:load /> 
 		<Home client:load />
 		<Projects client:load />
 		<About client:load />
-		<Experience client:load />
+		<Experience experiences={experiences} client:load />
 		<Education client:load />
 		<Certifications client:load />
 		<Contact client:load />

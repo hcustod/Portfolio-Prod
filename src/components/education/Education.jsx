@@ -58,7 +58,7 @@ const Education = () => {
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-6xl backdrop-blur-sm">
           {educations.map((edu, index) => (
-            <div key={index} className="bg-white/7 border border-white/10 rounded-2xl p-8 shadow-[0_0_20px_rgba(0,255,255,0.15)] hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] transition-all duration-500 text-left fade-in-up">
+            <div key={index} className="bg-white/10 border border-white/10 rounded-2xl p-8 shadow-[0_0_20px_rgba(0,255,255,0.15)] hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] transition-all duration-500 text-left fade-in-up">
               <div className="mb-4">
                 <h3 className="text-2xl font-semibold text-white hover:underline">
                   <a href={edu.link} target="_blank" rel="noopener noreferrer">
