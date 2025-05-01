@@ -15,7 +15,7 @@ const HomeSection = () => {
       startDelay: 500,
       smartBackspace: true,
       showCursor: true,
-    });
+    })
 
     return () => {
       typed.destroy();
@@ -27,7 +27,7 @@ const HomeSection = () => {
       id="home"
       className="w-full h-screen flex items-center justify-center px-4 md:px-12 text-left relative"
     >
-      <div className="max-w-3xl w-full bg-white/5 backdrop-blur-lg rounded-2xl p-12 shadow-[0_0_20px_rgba(0,255,255,0.15)] border border-white/10 animate-slideInFromLeft">
+      <div className="max-w-3xl w-full bg-white/10 backdrop-blur-sm rounded-2xl p-12 shadow-[0_0_20px_rgba(0,255,255,0.15)] border border-white/10 animate-slideInFromLeft">
         <h1 className="text-5xl font-bold text-slate-100 mb-4 leading-tight">
           I'm{' '}
           <span className="border-2 border-white px-5 py-2 rounded-md uppercase font-bold inline-block">

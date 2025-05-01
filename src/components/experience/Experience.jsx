@@ -1,11 +1,14 @@
 import React, { useEffect, useRef } from 'react';
+import InteleradLogo from '../../assets/experienceLogos/intelerad-logo.jpeg';
+import BDSRLogo from '../../assets/experienceLogos/bdsr-logo-final.png';
+import TelusLogo from '../../assets/experienceLogos/Telus-Logo.png';
 
 const experiences = [
   {
     company: "Bohrium Data & Security Research",
     role: "Assistant Developer",
     date: "Sept 2024 – Present | Toronto, ON",
-    logo: "/assets/img/bdsr-logo-final.png",
+    logo: BDSRLogo,
     link: "#",
     points: [
       "Led PostgreSQL upgrades to 13+ ensuring stable migrations.",
@@ -19,7 +22,7 @@ const experiences = [
     company: "Intelerad",
     role: "System Technology Specialist",
     date: "Jan 2024 – Sept 2024 | Toronto, ON",
-    logo: "/assets/img/intelerad-logo.jpeg",
+    logo: InteleradLogo,
     link: "https://www.intelerad.com/en/",
     points: [
       "Managed RHEL servers for critical PACS Radiology Systems.",
@@ -33,7 +36,7 @@ const experiences = [
     company: "Telus",
     role: "Developer Analyst",
     date: "May 2022 – Aug 2023 | Montreal, QC",
-    logo: "/assets/img/Telus-Logo.png",
+    logo: TelusLogo,
     link: "https://www.telus.com",
     points: [
       "Supported GCP Cloud Storage and Database services.",
@@ -44,6 +47,7 @@ const experiences = [
     ]
   },
 ];
+
 
 const Experience = () => {
   return (
@@ -60,7 +64,7 @@ const Experience = () => {
         `}
       </style>
 
-      <section id="experience" className="w-full min-h-screen pt-36 pb-20 px-8 md:px-16 bg-transparent flex flex-col items-center text-center relative">
+      <section id="experience" className="w-full min-h-screen py-24 px-8 md:px-16 flex flex-col items-center text-center relative">
         
         {/* Title */}
         <h2 className="text-4xl font-bold text-slate-100 mb-20 pb-5 z-10 relative">
@@ -68,7 +72,7 @@ const Experience = () => {
         </h2>
 
         {/* Timeline Line */}
-        <div className="absolute top-40 left-1/2 transform -translate-x-1/2 h-[75%] w-1 mt-20 bg-white/20"></div>
+        <div className="absolute top-20 left-1/2 transform -translate-x-1/2 h-[75%] w-1 mt-35 bg-white/20"></div>
 
         {/* Experience Cards */}
         <div className="flex flex-col gap-20 relative w-full max-w-6xl">
@@ -81,7 +85,7 @@ const Experience = () => {
               <div className="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-emerald-400 rounded-full shadow-lg group-hover:scale-125 transition-transform"></div>
 
               {/* Card */}
-              <div className={`w-full sm:w-[45%] bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-[0_0_20px_rgba(0,255,255,0.15)] hover:shadow-[0_0_35px_rgba(0,255,255,0.4)] transition-all duration-500 text-left ${index % 2 === 0 ? 'ml-8' : 'mr-8'}`}>
+              <div className={`w-full sm:w-[45%] bg-white/20 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-[0_0_20px_rgba(0,255,255,0.15)] hover:shadow-[0_0_35px_rgba(0,255,255,0.4)] transition-all duration-500 text-left ${index % 2 === 0 ? 'ml-8' : 'mr-8'}`}>
                 <div className="flex items-center gap-4 mb-4">
                   <img src={exp.logo} alt={exp.company} className="w-10 h-10 object-contain rounded-full" />
                   <div>

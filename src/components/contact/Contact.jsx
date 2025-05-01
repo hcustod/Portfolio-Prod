@@ -30,10 +30,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="w-full min-h-screen pt-36 pb-20 px-8 md:px-16 bg-transparent flex flex-col items-center text-center relative">
+    <section id="contact" className="w-full min-h-screen py-24 pb-20 px-8 md:px-16 bg-transparent flex flex-col items-center text-center relative">
       
       {/* Title */}
-      <h2 className="text-4xl font-bold text-slate-100 mb-16">
+      <h2 className="text-4xl font-bold text-slate-100 mb-20">
         Contact
       </h2>
 
@@ -56,7 +56,7 @@ const Contact = () => {
       </div>
 
       {/* Contact Form */}
-      <div className="w-full max-w-3xl bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-lg text-left">
+      <div className="w-full max-w-3xl bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-8 shadow-lg text-left">
         <h3 className="text-2xl text-slate-100 mb-6 text-center">Send Me a Message</h3>
         <form onSubmit={handleSubmit} id="email_form" className="flex flex-col gap-6">
           <input type="hidden" name="access_token" value="d2pih08z1mvqtkyqdk31dcsu" />

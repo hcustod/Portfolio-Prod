@@ -48,7 +48,7 @@ const Certifications = () => {
         `}
       </style>
 
-      <section id="certifications" className="w-full min-h-screen pt-36 pb-20 px-8 md:px-16 flex flex-col items-center text-center relative">
+      <section id="certifications" className="w-full px-8 py-24 md:px-16 flex flex-col items-center text-center relative">
         
         {/* Title */}
         <h2 className="text-4xl font-bold text-slate-100 mb-20 pb-5 z-10 relative">
@@ -58,7 +58,7 @@ const Certifications = () => {
         {/* Certification Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 w-full max-w-6xl">
           {certifications.map((cert, index) => (
-            <div key={index} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-[0_0_20px_rgba(0,255,255,0.15)] hover:shadow-[0_0_30px_rgba(0,255,255,0.3)] transition-all duration-500 fade-in-zoom">
+            <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-6 shadow-[0_0_20px_rgba(0,255,255,0.15)] hover:shadow-[0_0_30px_rgba(0,255,255,0.3)] transition-all duration-500 fade-in-zoom">
               <h3 className="text-xl font-semibold text-white mb-2">{cert.title}</h3>
               <p className="text-blue-300 text-sm">{cert.issuer}</p>
               <p className="text-blue-400 text-xs mt-4">Issued: {cert.year}</p>

@@ -48,7 +48,7 @@ const Education = () => {
         `}
       </style>
 
-      <section id="education" className="w-full min-h-screen pt-36 pb-20 px-8 md:px-16 flex flex-col items-center text-center relative">
+      <section id="education" className="w-full py-24 px-8 md:px-16 flex flex-col items-center text-center relative bg-transparent">
         
         {/* Title */}
         <h2 className="text-4xl font-bold text-slate-100 mb-20 pb-5 z-10 relative">
@@ -56,9 +56,9 @@ const Education = () => {
         </h2>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-6xl backdrop-blur-sm">
           {educations.map((edu, index) => (
-            <div key={index} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-[0_0_20px_rgba(0,255,255,0.15)] hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] transition-all duration-500 text-left fade-in-up">
+            <div key={index} className="bg-white/7 border border-white/10 rounded-2xl p-8 shadow-[0_0_20px_rgba(0,255,255,0.15)] hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] transition-all duration-500 text-left fade-in-up">
               <div className="mb-4">
                 <h3 className="text-2xl font-semibold text-white hover:underline">
                   <a href={edu.link} target="_blank" rel="noopener noreferrer">
