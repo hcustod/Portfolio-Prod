@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import Typed from 'typed.js';
 
 const HomeSection = () => {
   const typedRef = useRef(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
@@ -15,12 +16,24 @@ const HomeSection = () => {
       startDelay: 500,
       smartBackspace: true,
       showCursor: true,
-    })
-
-    return () => {
-      typed.destroy();
-    };
+    });
+    return () => typed.destroy();
   }, []);
+
+  const handleViewResume = () => {
+    window.open('/resume.pdf', '_blank');
+    setDropdownOpen(false);
+  };
+
+  const handleDownloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Henrique-Custodio-Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setDropdownOpen(false);
+  };
 
   return (
     <section
@@ -55,10 +68,33 @@ const HomeSection = () => {
           </a>
         </div>
 
-        <div className="flex flex-wrap gap-4 mt-10">
-          <a href="#about" className="border-2 border-white text-emerald-900 bg-white px-6 py-3 rounded-full font-bold uppercase transition-all duration-300 hover:bg-transparent hover:text-white hover:scale-105">
-            Read More
-          </a>
+        <div className="relative flex flex-wrap gap-4 mt-10">
+          {/* Resume Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setDropdownOpen(prev => !prev)}
+              className="border-2 border-white text-emerald-900 bg-white px-6 py-3 rounded-full font-bold uppercase transition-all duration-300 hover:bg-transparent hover:text-white hover:scale-105"
+            >
+              Resume
+            </button>
+            {dropdownOpen && (
+              <div className="absolute mt-2 left-0 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-2 w-48 shadow-lg z-50">
+                <button
+                  onClick={handleViewResume}
+                  className="block w-full text-left px-4 py-2 text-white hover:text-teal-300 hover:bg-white/10 rounded-md"
+                >
+                  View Resume
+                </button>
+                <button
+                  onClick={handleDownloadResume}
+                  className="block w-full text-left px-4 py-2 text-white hover:text-teal-300 hover:bg-white/10 rounded-md mt-1"
+                >
+                  Download PDF
+                </button>
+              </div>
+            )}
+          </div>
+
           <a href="#contact" className="border-2 border-white text-emerald-900 bg-white px-6 py-3 rounded-full font-bold uppercase transition-all duration-300 hover:bg-transparent hover:text-white hover:scale-105">
             Contact Me
           </a>
