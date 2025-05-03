@@ -9,27 +9,60 @@ import Experience from '../components/experience/Experience.jsx';
 import Education from '../components/education/Education.jsx';
 import Certifications from '../components/certifications/Certifications.jsx';
 import Contact from '../components/contact/Contact.jsx';
+import Skills from '../components/skills/Skills.jsx';
 
 // Image preprocessing for astro 
 import { getImage } from 'astro:assets';
 import inteleradLogo from '../assets/experienceLogos/intelerad-logo.jpeg';
 import bdsrLogo from '../assets/experienceLogos/bdsr-logo-final.png';
 import telusLogo from '../assets/experienceLogos/Telus-Logo.png';
+
+// Navbar - My Logo 
 import logoSvg from '../assets/myLogo/logo.jpg';
+
+// Skills Logos
+import pythonLogo from '../assets/skills/python-logo-1-300x300.jpg';
+import javaLogo from '../assets/skills/java.png';
+import htmlCssJsLogo from '../assets/skills/html-css-js.png';
+import mysqlLogo from '../assets/skills/mysql-logo-1-300x300.jpg';
+import postgresLogo from '../assets/skills/postgresql-logo.png';
+import shellLogo from '../assets/skills/shell-logo-1-300x300.jpg';
+
+import numpyLogo from '../assets/skills/numpy-logo-1-500x500.jpg';
+import pandasLogo from '../assets/skills/pandas-logo-2-500x500.jpg';
+import opencvLogo from '../assets/skills/opencv-logo-1-500x500.jpg';
+import sklearnLogo from '../assets/skills/sk-learn-logo-1-500x500.jpg';
+import matplotlibLogo from '../assets/skills/matplotlib-logo-1-500x500.jpg';
+import springLogo from '../assets/skills/spring.png';
+
+import djangoLogo from '../assets/skills/django-logo.webp';
+import flaskLogo from '../assets/skills/flask-logo.png';
+import bootstrapLogo from '../assets/skills/bootstrap.png';
+import kerasLogo from '../assets/skills/keras-logo.png';
+import tensorflowLogo from '../assets/skills/tensorflow-logo-1.png';
+import pytorchLogo from '../assets/skills/pytorch-logo.png';
+
+import gitLogo from '../assets/skills/git.png';
+import awsLogo from '../assets/skills/aws.png';
+import gcpLogo from '../assets/skills/google-cloud.png';
+import dockerLogo from '../assets/skills/docker-logo.webp';
+import kubernetesLogo from '../assets/skills/kubernetes.png';
+import terraformLogo from '../assets/skills/terraform.png';
 
 
 const experienceImages = {
-  intelerad: await getImage({ src: inteleradLogo, width: 64 }),
-  bdsr: await getImage({ src: bdsrLogo, width: 64 }),
-  telus: await getImage({ src: telusLogo, width: 64 })
+  intelerad: (await getImage({ src: inteleradLogo, width: 64 })).src,
+  bdsr: (await getImage({ src: bdsrLogo, width: 64 })).src,
+  telus: (await getImage({ src: telusLogo, width: 64 })).src
 };
+
 
 const experiences = [
   {
     company: "Bohrium Data & Security Research",
     role: "Assistant Developer",
     date: "Sept 2024 – Present | Toronto, ON",
-    logo: experienceImages.bdsr.src,
+    logo: experienceImages.bdsr,
     link: "#",
     points: [
       "Led PostgreSQL upgrades to 13+ ensuring stable migrations.",
@@ -43,7 +76,7 @@ const experiences = [
     company: "Intelerad",
     role: "System Technology Specialist",
     date: "Jan 2024 – Sept 2024 | Toronto, ON",
-    logo: experienceImages.intelerad.src,
+    logo: experienceImages.intelerad,
     link: "https://www.intelerad.com/en/",
     points: [
       "Managed RHEL servers for critical PACS Radiology Systems.",
@@ -57,7 +90,7 @@ const experiences = [
     company: "Telus",
     role: "Developer Analyst",
     date: "May 2022 – Aug 2023 | Montreal, QC",
-    logo: experienceImages.telus.src,
+    logo: experienceImages.telus,
     link: "https://www.telus.com",
     points: [
       "Supported GCP Cloud Storage and Database services.",
@@ -70,7 +103,38 @@ const experiences = [
 ];
 
 // logo image preprocessing
-const logo = await getImage({ src: logoSvg, width: 64 }); // or 48/32 if needed
+const logo = (await getImage({ src: logoSvg, width: 64 })).src; // or 48/32 if needed
+
+// Skills image preprocessing
+const skillsImages = {
+  python: (await getImage({ src: pythonLogo, width: 64 })).src,
+  java: (await getImage({ src: javaLogo, width: 64 })).src,
+  htmlcssjs: (await getImage({ src: htmlCssJsLogo, width: 64 })).src,
+  mysql: (await getImage({ src: mysqlLogo, width: 64 })).src,
+  postgres: (await getImage({ src: postgresLogo, width: 64 })).src,
+  shell: (await getImage({ src: shellLogo, width: 64 })).src,
+
+  numpy: (await getImage({ src: numpyLogo, width: 64 })).src,
+  pandas: (await getImage({ src: pandasLogo, width: 64 })).src,
+  opencv: (await getImage({ src: opencvLogo, width: 64 })).src,
+  sklearn: (await getImage({ src: sklearnLogo, width: 64 })).src,
+  matplotlib: (await getImage({ src: matplotlibLogo, width: 64 })).src,
+  spring: (await getImage({ src: springLogo, width: 64 })).src,
+
+  django: (await getImage({ src: djangoLogo, width: 64 })).src,
+  flask: (await getImage({ src: flaskLogo, width: 64 })).src,
+  bootstrap: (await getImage({ src: bootstrapLogo, width: 64 })).src,
+  keras: (await getImage({ src: kerasLogo, width: 64 })).src,
+  tensorflow: (await getImage({ src: tensorflowLogo, width: 64 })).src,
+  pytorch: (await getImage({ src: pytorchLogo, width: 64 })).src,
+
+  git: (await getImage({ src: gitLogo, width: 64 })).src,
+  aws: (await getImage({ src: awsLogo, width: 64 })).src,
+  gcp: (await getImage({ src: gcpLogo, width: 64 })).src,
+  docker: (await getImage({ src: dockerLogo, width: 64 })).src,
+  kubernetes: (await getImage({ src: kubernetesLogo, width: 64 })).src,
+  terraform: (await getImage({ src: terraformLogo, width: 64 })).src,
+};
 
 
 ---
@@ -88,12 +152,13 @@ const logo = await getImage({ src: logoSvg, width: 64 }); // or 48/32 if needed
 
 		<BackgroundCanvas client:only="react" />
 
-		<SideNavbar logo={logo.src} client:load /> 
+		<SideNavbar logo={logo} client:load /> 
 		<Home client:load />
 		<Projects client:load />
 		<About client:load />
 		<Experience experiences={experiences} client:load />
 		<Education client:load />
+		<Skills skillImages={skillsImages} client:load />
 		<Certifications client:load />
 		<Contact client:load />
 

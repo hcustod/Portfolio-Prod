@@ -13,7 +13,8 @@ const SideNavbar = ({ logo }) => {
     { label: 'About', icon: <i className="fa fa-user" />, href: '#about' },
     { label: 'Experience', icon: <i className="fa fa-briefcase" />, href: '#experience' },
     { label: 'Education', icon: <i className="fa fa-graduation-cap" />, href: '#education' },
-    { label: 'Certifications', icon: <i className="fa fa-certificate" />, href: '#certifications' },
+    { label: 'Skills', icon: <i className="fa fa-envelope" />, href: '#skills' },
+    { label: 'Certifications', icon: <i className="fa fa-kitchen-set" />, href: '#certifications' },
     { label: 'Contact', icon: <i className="fa fa-envelope" />, href: '#contact' },
   ];
 
