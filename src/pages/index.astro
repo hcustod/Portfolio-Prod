@@ -147,6 +147,10 @@ const skillsImages = {
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 		<link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
 	</head>
 	<body>
 
@@ -154,13 +158,13 @@ const skillsImages = {
 
 		<SideNavbar logo={logo} client:load /> 
 		<Home client:load />
-		<Projects client:load />
-		<About client:load />
-		<Experience experiences={experiences} client:load />
-		<Education client:load />
-		<Skills skillImages={skillsImages} client:load />
-		<Certifications client:load />
-		<Contact client:load />
+		<Projects client:idle />
+		<About client:visible />
+		<Experience experiences={experiences} client:visible />
+		<Education client:visible />
+		<Skills skillImages={skillsImages} client:visible />
+		<Certifications client:visible />
+		<Contact client:visible />
 
 	</body>
 </html>

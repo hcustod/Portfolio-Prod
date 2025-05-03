@@ -38,34 +38,35 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="w-full min-h-screen px-4 md:px-16 py-24 bg-transparent flex flex-col items-center">
-      <h2 className="text-4xl font-bold text-slate-100 mb-20 text-center">
+    <section id="projects" className="w-full min-h-screen px-6 md:px-20 py-28 flex flex-col items-center bg-transparent">
+      <h2 className="text-5xl font-bold text-slate-100 mb-24 text-center">
         My Projects
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-6xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 w-full max-w-7xl">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-6 shadow-[0_0_20px_rgba(0,255,255,0.15)] flex flex-col transform transition-transform duration-300 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(0,255,255,0.3)]"
+            className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8 shadow-[0_0_25px_rgba(0,255,255,0.15)] 
+            hover:shadow-[0_0_40px_rgba(0,255,255,0.3)] flex flex-col transform transition-transform duration-300 hover:scale-[1.035]"
           >
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-44 object-cover rounded-xl mb-4"
+              className="w-full h-56 object-cover rounded-xl mb-6"
             />
-            <h3 className="text-2xl font-semibold text-white mb-2">
+            <h3 className="text-3xl font-semibold text-white mb-3">
               {project.title}
             </h3>
-            <p className="text-blue-300 text-sm mb-4 leading-relaxed">
+            <p className="text-blue-300 text-base mb-5 leading-relaxed">
               {project.description}
             </p>
 
-            <div className="flex flex-wrap gap-2 mb-6">
+            <div className="flex flex-wrap gap-3 mb-8">
               {project.tech.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="bg-white/10 text-white text-xs px-3 py-1 rounded-full"
+                  className="bg-white/10 text-white text-sm px-4 py-1.5 rounded-full"
                 >
                   {tech}
                 </span>
@@ -77,17 +78,17 @@ const Projects = () => {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-1/2 text-center border-2 border-white text-emerald-900 bg-white px-4 py-2 rounded-full font-bold uppercase text-xs transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105 flex items-center justify-center gap-2"
+                className="w-1/2 text-center border-2 border-white text-emerald-900 bg-white px-5 py-3 rounded-full font-bold uppercase text-sm transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105 flex items-center justify-center gap-2"
               >
-                <FaGlobe className="text-sm" /> Live Demo
+                <FaGlobe className="text-base" /> Live Demo
               </a>
               <a
                 href={project.code}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-1/2 text-center border-2 border-white text-emerald-900 bg-white px-4 py-2 rounded-full font-bold uppercase text-xs transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105 flex items-center justify-center gap-2"
+                className="w-1/2 text-center border-2 border-white text-emerald-900 bg-white px-5 py-3 rounded-full font-bold uppercase text-sm transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105 flex items-center justify-center gap-2"
               >
-                <FaGithub className="text-sm" /> GitHub
+                <FaGithub className="text-base" /> GitHub
               </a>
             </div>
           </div>
