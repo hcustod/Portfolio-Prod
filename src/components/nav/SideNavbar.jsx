@@ -20,17 +20,57 @@ const SideNavbar = ({ logo }) => {
     <>
       {/* Mobile Hamburger */}
       <button
-        className="md:hidden fixed top-4 left-4 z-50 text-white text-3xl bg-white/10 border border-white/20 rounded-lg p-3 backdrop-blur-md"
+        className="md:hidden fixed top-4 left-4 z-50 text-white text-3xl bg-white/10 border border-white/20 rounded-lg p-3 backdrop-blur-md hover:bg-white/20 transition-all duration-300"
         onClick={toggleMobileMenu}
       >
         <i className="fa-solid fa-bars" />
       </button>
 
-      {/* Sidebar */}
+      {/* Mobile Fullscreen Menu */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-black/90 text-white flex flex-col items-center justify-center space-y-8 text-2xl backdrop-blur-lg md:hidden">
+          {/* Close Button */}
+          <button
+            className="absolute top-4 right-4 text-white text-3xl hover:text-teal-300 transition duration-300 hover:scale-110"
+            onClick={toggleMobileMenu}
+          >
+            <i className="fa-solid fa-xmark drop-shadow-lg" />
+          </button>
+
+          {/* Logo */}
+          <div className="flex justify-center items-center w-full">
+            <img src={logo} alt="Logo" className="w-20 ml-2 rounded-full shadow-lg" />
+          </div>
+
+          {/* Navigation Items */}
+          <div className="w-full flex justify-center">
+            <ul className="flex flex-col items-start space-y-4 mt-6">
+              {navItems.map((item, index) => (
+                <li key={index}>
+                  <a
+                    href={item.href}
+                    onClick={toggleMobileMenu}
+                    className="ml-16 flex items-center gap-4 text-white hover:text-teal-300 hover:bg-white/10 px-4 py-2 rounded-md transition duration-300 ease-in-out hover:scale-105"
+                  >
+                    {/* Fixed-width icon for alignment */}
+                    <span className="text-2xl w-8 flex justify-center">{item.icon}</span>
+                    <span className="pl-2 text-2xl w-8 flex justify-center"> - </span>
+                    {/* Consistently spaced label */}
+                    <span className="text-xl font-semibold pl-4">{item.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
+      {/* Sidebar (only visible on desktop and when mobile menu is not active) */}
       <div
-        className={`fixed top-0 left-0 z-40 h-full w-16 bg-white/7 backdrop-blur-sm shadow-lg border-r border-white/10 
-        overflow-visible transition-all duration-700 ease-in-out 
-        ${!mobileMenuOpen && 'hidden md:block'}`}
+        className={`${
+          mobileMenuOpen ? 'hidden' : 'hidden md:flex'
+        } fixed top-0 left-0 z-40 h-full w-16 bg-white/7 backdrop-blur-sm shadow-lg border-r border-white/10 
+        flex-col items-center transition-all duration-700 ease-in-out`}
       >
         {/* Logo */}
         <div className="flex justify-center py-6">
@@ -38,8 +78,8 @@ const SideNavbar = ({ logo }) => {
             <img
               src={logo}
               alt="Logo"
-              width={48}
-              height={48}
+              width={80}
+              height={60}
               className="rounded-full shadow-md"
             />
           </a>
@@ -53,7 +93,7 @@ const SideNavbar = ({ logo }) => {
                 href={item.href}
                 className="flex items-center justify-center w-full py-3 px-4 text-white hover:text-teal-300 hover:bg-white/10 transition-all duration-300 relative z-10"
               >
-                {/* Icon (larger size) */}
+                {/* Icon */}
                 <span className="text-2xl">{item.icon}</span>
 
                 {/* Expanding Label */}
