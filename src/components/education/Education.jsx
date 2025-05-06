@@ -5,30 +5,30 @@ const educations = [
     school: "George Brown College",
     location: "Toronto, Ontario",
     degree: "Advanced Diploma in Computer Programming and Analysis",
-    cgpa: "3.84/4.0",
+    cgpa: "3.84 / 4.0",
     link: "https://www.georgebrown.ca/",
     date: "Sept 2023 – Apr 2026",
     coursework: [
-      "Object-Oriented Programming",
-      "Agile Software Development",
-      "Data Structures and Algorithms",
-      "Web Application Development",
-      "Operating Systems"
+      "Object-Oriented Programming: Java and C# with focus on encapsulation, inheritance, and abstraction.",
+      "Agile Software Development: SCRUM practices using Git and Jira in collaborative team environments.",
+      "Data Structures and Algorithms: recursion, sorting, and graph traversal with performance analysis.",
+      "Web Application Development: built full-stack apps using React, Node.js, Express, and SQL databases.",
+      "Operating Systems: shell scripting, process management, and Linux file system navigation."
     ]
   },
   {
     school: "The University of British Columbia",
     location: "Vancouver, British Columbia",
     degree: "Bachelor of Arts in Psychology",
-    cgpa: "3.13/4.33",
+    cgpa: "3.13 / 4.33",
     link: "https://www.ubc.ca/",
-    date: "Sept 2016 – April 2021",
+    date: "Sept 2016 – Apr 2021",
     coursework: [
-      "Behavioral Neuroscience",
-      "Research Methods",
-      "Data Analysis in Psychology",
-      "Evolutionary Psychology",
-      "Cognitive Psychology"
+      "Cognitive Psychology: studied attention, memory, and problem-solving processes.",
+      "Behavioral Neuroscience: examined the biological basis of behavior and brain function.",
+      "Research Methods: designed experiments, applied ethical protocols, and collected behavioral data.",
+      "Data Analysis: conducted statistical tests using SPSS and R for quantitative research.",
+      "Scientific Communication: authored academic papers and delivered research findings effectively."
     ]
   }
 ];
@@ -39,52 +39,67 @@ const Education = () => {
       <style>
         {`
           @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(40px); }
+            0% { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
           }
           .fade-in-up {
-            animation: fadeInUp 1s ease-out forwards;
+            animation: fadeInUp 0.8s ease-out forwards;
           }
         `}
       </style>
 
-      <section id="education" className="w-full py-24 px-8 md:px-16 flex flex-col items-center text-center relative bg-transparent">
-        
-        {/* Title */}
-        <h2 className="text-5xl font-bold text-slate-100 mb-20 pb-5 z-10 relative">
+      <section
+        id="education"
+        className="w-full py-20 sm:py-24 px-4 sm:px-6 md:px-16 flex flex-col items-center text-center relative bg-transparent"
+      >
+        <h2 className="text-5xl font-bold text-slate-100 mb-4 z-10 relative">
           Education
         </h2>
+        <div className="w-30 h-1 bg-teal-400 rounded-full mb-12"></div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-6xl backdrop-blur-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-6xl">
           {educations.map((edu, index) => (
-            <div key={index} className="bg-white/10 border border-white/10 rounded-2xl p-8 shadow-[0_0_20px_rgba(0,255,255,0.15)] hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] transition-all duration-500 text-left fade-in-up">
-              <div className="mb-4">
-                <h3 className="text-2xl font-semibold text-white hover:underline">
-                  <a href={edu.link} target="_blank" rel="noopener noreferrer">
+            <div
+              key={index}
+              className="fade-in-up backdrop-blur-sm bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-2xl p-8 shadow-[0_0_25px_rgba(0,255,255,0.15)] hover:shadow-[0_0_40px_rgba(0,255,255,0.4)] hover:scale-[1.01] transition-all duration-500 text-left"
+            >
+              <header className="mb-4">
+                <a href={edu.link} target="_blank" rel="noopener noreferrer">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white hover:underline">
                     {edu.school}
-                  </a>
-                </h3>
-                <p className="text-blue-300 text-sm">{edu.location}</p>
-              </div>
+                  </h3>
+                </a>
+                <p className="text-blue-300 text-sm sm:text-base">{edu.location}</p>
+              </header>
 
-              <p className="text-blue-200 mb-4 text-sm">
-                <b>Degree:</b> {edu.degree}<br/>
-                <b>CGPA:</b> {edu.cgpa}
+              <p className="text-blue-100 text-sm sm:text-base leading-relaxed mb-2">
+                <span className="font-semibold text-white">Degree:</span> {edu.degree}
+              </p>
+              <p className="text-blue-100 text-sm sm:text-base leading-relaxed mb-6">
+                <span className="font-semibold text-white">CGPA:</span> {edu.cgpa}
               </p>
 
-              <div className="text-blue-200 text-sm mb-4">
-                <p className="font-semibold mb-2">Relevant Coursework:</p>
-                <ul className="list-disc list-inside space-y-1 pl-2">
-                  {edu.coursework.map((course, idx) => (
-                    <li key={idx}>{course}</li>
-                  ))}
+              <div className="text-blue-100 text-sm sm:text-base">
+                <p className="font-semibold text-white mb-2">Relevant Coursework:</p>
+                <ul className="list-disc list-inside pl-4 space-y-1">
+                  {edu.coursework.map((course, idx) => {
+                    const [title, desc] = course.includes(": ")
+                      ? course.split(": ")
+                      : [course, ''];
+                    return (
+                      <li
+                        key={idx}
+                        className="hover:text-white transition duration-200"
+                      >
+                        <span className="font-semibold text-white">{title}</span>
+                        {desc ? `: ${desc}` : ''}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
 
-              <div className="mt-6 text-xs text-blue-400">
-                {edu.date}
-              </div>
+              <p className="text-blue-400 text-xs mt-6">{edu.date}</p>
             </div>
           ))}
         </div>

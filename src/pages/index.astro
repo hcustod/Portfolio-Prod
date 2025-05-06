@@ -15,10 +15,10 @@ import Skills from '../components/skills/Skills.jsx';
 import { getImage } from 'astro:assets';
 import inteleradLogo from '../assets/experienceLogos/intelerad-logo.jpeg';
 import bdsrLogo from '../assets/experienceLogos/bdsr-logo-final.png';
-import telusLogo from '../assets/experienceLogos/Telus-Logo.png';
+import telusLogo from '../assets/experienceLogos/telus-icon.png';
 
 // Navbar - My Logo 
-import logoSvg from '../assets/myLogo/Logo6.png';
+import logoSvg from '../assets/myLogo/myFinalLogo.png';
 
 // Skills Logos
 import pythonLogo from '../assets/skills/python-logo-only.png';
@@ -67,11 +67,11 @@ const experiences = [
     logo: experienceImages.bdsr,
     link: "#",
     points: [
-      "Led PostgreSQL upgrades to 13+ ensuring stable migrations.",
-      "Containerized CMS websites with automated CI/CD.",
-      "Built disaster recovery and backup strategies.",
-      "Weekly client meetings to align project goals.",
-      "Tools: PostgreSQL, Sqitch, Docker, GCP, Git, Java, Bash"
+      "Upgraded PostgreSQL clusters to v13+ with zero-downtime migrations.",
+      "Containerized CMS platforms and deployed CI/CD pipelines in Docker.",
+      "Planned backup and disaster recovery solutions.",
+      "Led weekly client syncs to align goals and priorities.",
+      "Tech: PostgreSQL, Sqitch, Docker, GCP, Git, Java, Bash"
     ]
   },
   {
@@ -81,11 +81,11 @@ const experiences = [
     logo: experienceImages.intelerad,
     link: "https://www.intelerad.com/en/",
     points: [
-      "Managed RHEL servers for critical PACS Radiology Systems.",
-      "Maintained HL7/DICOM services and security policies.",
-      "Administered Sybase and PostgreSQL healthcare databases.",
-      "Resolved SLA-priority production issues swiftly.",
-      "Tools: RHEL, PostgreSQL, Sybase, HL7, Bash, IPTables, DICOM"
+      "Managed RHEL-based PACS and DICOM infrastructure for critical Radiology Systems.",
+      "Tuned PostgreSQL and Sybase databases for HL7/DICOM services.",
+      "Hardened systems via IPTables and OS-level security policies.",
+      "Resolved SLA-bound incidents alongside dev and QA teams.",
+      "Tech: RHEL, PostgreSQL, Sybase, HL7, Bash, IPTables, DICOM"
     ]
   },
   {
@@ -95,14 +95,15 @@ const experiences = [
     logo: experienceImages.telus,
     link: "https://www.telus.com",
     points: [
-      "Supported GCP Cloud Storage and Database services.",
-      "Authored documentation reducing incident escalations.",
-      "Troubleshot networking, storage, and devops issues.",
-      "Collaborated cross-team for customer-impact fixes.",
-      "Tools: GCP, Bash, Networking, Jira, Git"
+      "Supported GCP Storage, Compute, and Cloud SQL for enterprise clients.",
+      "Wrote documentation that reduced escalations by 25%.",
+      "Diagnosed networking and IAM issues using Stackdriver and Bash.",
+      "Partnered with architects and engineers to resolve outages.",
+      "Tech: GCP, Bash, Git, Jira, Networking, IAM"
     ]
   },
 ];
+
 
 // logo image preprocessing
 const logo = (await getImage({ src: logoSvg, width: 64 })).src; // or 48/32 if needed

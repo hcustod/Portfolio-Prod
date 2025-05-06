@@ -32,9 +32,11 @@ const Contact = () => {
       id="contact"
       className="w-full min-h-screen py-24 px-6 md:px-16 flex flex-col items-center relative"
     >
-      <h2 className="text-5xl font-bold text-slate-100 mb-16">
+      <h2 className="text-5xl font-bold text-slate-100 mb-4">
         Contact
       </h2>
+      <div className="w-30 h-1 bg-teal-400 rounded-full mb-12"></div>
+
 
       {/* Social Icons */}
       <div className="flex gap-6 mb-12">

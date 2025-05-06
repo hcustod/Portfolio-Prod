@@ -39,7 +39,7 @@ const SideNavbar = ({ logo }) => {
 
           {/* Logo */}
           <div className="flex justify-center items-center w-full">
-            <img src={logo} alt="Logo" className="w-20 ml-2 rounded-full shadow-lg" />
+            <img src={logo} alt="Logo" className="w-20 ml-2 shadow-lg" />
           </div>
 
           {/* Navigation Items */}
@@ -74,13 +74,13 @@ const SideNavbar = ({ logo }) => {
       >
         {/* Logo */}
         <div className="flex justify-center py-6">
-          <a href="#home" className="transition-transform duration-300 hover:scale-110">
+          <a href="#home" className="transition-transform duration-300 hover:scale-110 hover:opacity-100 hover:bg-white/10">
             <img
               src={logo}
               alt="Logo"
-              width={80}
-              height={60}
-              className="rounded-full shadow-md"
+              width={60}
+              height={20}
+              className="shadow-md max-w-13"
             />
           </a>
         </div>

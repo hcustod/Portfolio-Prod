@@ -38,27 +38,28 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="w-full min-h-screen px-4 md:px-14 py-20 flex flex-col items-center bg-transparent">
-      <h2 className="mt-4 text-5xl font-bold text-slate-100 mb-16 text-center">
-        My Projects
+    <section
+      id="projects"
+      className="w-full py-20 sm:py-24 px-4 sm:px-6 md:px-16 flex flex-col items-center text-center bg-transparent"
+    >
+      <h2 className="text-5xl font-bold text-slate-100 mb-4 z-10 relative">
+        Projects
       </h2>
+      <div className="w-24 h-1 bg-teal-400 rounded-full mb-12"></div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-6xl">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-6 shadow-[0_0_20px_rgba(0,255,255,0.15)] 
-            hover:shadow-[0_0_35px_rgba(0,255,255,0.3)] flex flex-col transform transition-transform duration-300 hover:scale-[1.03]"
+            className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 shadow-[0_0_25px_rgba(0,255,255,0.15)] hover:shadow-[0_0_40px_rgba(0,255,255,0.3)] transition-transform duration-300 hover:scale-[1.03] text-left flex flex-col"
           >
             <img
               src={project.image}
               alt={project.title}
               className="w-full h-48 object-cover rounded-xl mb-5"
             />
-            <h3 className="text-2xl font-semibold text-white mb-2">
-              {project.title}
-            </h3>
-            <p className="text-blue-300 text-sm mb-4 leading-relaxed">
+            <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+            <p className="text-blue-100 text-base mb-4 leading-relaxed">
               {project.description}
             </p>
 
@@ -66,7 +67,7 @@ const Projects = () => {
               {project.tech.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="bg-white/10 text-white text-xs px-3 py-1 rounded-full"
+                  className="bg-white/10 text-white text-sm px-3 py-1 rounded-full"
                 >
                   {tech}
                 </span>
@@ -78,7 +79,7 @@ const Projects = () => {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-1/2 text-center border-2 border-white text-emerald-900 bg-white px-4 py-2 rounded-full font-bold uppercase text-xs transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105 flex items-center justify-center gap-2"
+                className="w-1/2 text-center border-2 border-white text-emerald-900 bg-white px-4 py-2 rounded-full font-bold uppercase text-sm transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105 flex items-center justify-center gap-2"
               >
                 <FaGlobe className="text-sm" /> Live Demo
               </a>
@@ -86,7 +87,7 @@ const Projects = () => {
                 href={project.code}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-1/2 text-center border-2 border-white text-emerald-900 bg-white px-4 py-2 rounded-full font-bold uppercase text-xs transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105 flex items-center justify-center gap-2"
+                className="w-1/2 text-center border-2 border-white text-emerald-900 bg-white px-4 py-2 rounded-full font-bold uppercase text-sm transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105 flex items-center justify-center gap-2"
               >
                 <FaGithub className="text-sm" /> GitHub
               </a>
