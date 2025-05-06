@@ -27,7 +27,7 @@ const Experience = ({ experiences }) => {
         id="experience"
         className="w-full min-h-screen py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-16 flex flex-col items-center text-center relative"
       >
-        <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-12 sm:mb-16 pb-4 z-10 relative">
+        <h2 className="text-5xl font-bold text-slate-100 mb-12 sm:mb-16 pb-4 z-10 relative">
           Experience
         </h2>
 
