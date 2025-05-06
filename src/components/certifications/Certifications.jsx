@@ -51,7 +51,7 @@ const Certifications = () => {
       <section id="certifications" className="w-full px-8 py-24 md:px-16 flex flex-col items-center text-center relative">
         
         {/* Title */}
-        <h2 className="text-4xl font-bold text-slate-100 mb-20 pb-5 z-10 relative">
+        <h2 className="text-5xl font-bold text-slate-100 mb-20 pb-5 z-10 relative">
           Certifications
         </h2>
 

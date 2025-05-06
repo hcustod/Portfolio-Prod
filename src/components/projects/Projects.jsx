@@ -39,7 +39,7 @@ const projects = [
 const Projects = () => {
   return (
     <section id="projects" className="w-full min-h-screen px-4 md:px-14 py-20 flex flex-col items-center bg-transparent">
-      <h2 className="text-4xl font-bold text-slate-100 mb-20 text-center">
+      <h2 className="text-5xl font-bold text-slate-100 mb-20 text-center">
         My Projects
       </h2>
 

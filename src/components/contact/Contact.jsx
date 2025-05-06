@@ -33,7 +33,7 @@ const Contact = () => {
     <section id="contact" className="w-full min-h-screen py-24 pb-20 px-8 md:px-16 bg-transparent flex flex-col items-center text-center relative">
       
       {/* Title */}
-      <h2 className="text-4xl font-bold text-slate-100 mb-20">
+      <h2 className="text-5xl font-bold text-slate-100 mb-20">
         Contact
       </h2>
 

@@ -51,7 +51,7 @@ const Education = () => {
       <section id="education" className="w-full py-24 px-8 md:px-16 flex flex-col items-center text-center relative bg-transparent">
         
         {/* Title */}
-        <h2 className="text-4xl font-bold text-slate-100 mb-20 pb-5 z-10 relative">
+        <h2 className="text-5xl font-bold text-slate-100 mb-20 pb-5 z-10 relative">
           Education
         </h2>
 

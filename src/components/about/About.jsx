@@ -2,17 +2,17 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section id="about" className="w-full bg-transparent flex flex-col py-24 items-center text-center">
-      <h2 className="text-4xl font-bold text-slate-100 mb-20">
+    <section id="about" className="w-full bg-transparent flex flex-col py-16 sm:py-20 md:py-24 px-4 sm:px-6 items-center text-center">
+      <h2 className="text-5xl font-bold text-slate-100 mb-12 sm:mb-16">
         About Me
       </h2>
 
-      <div className="max-w-4xl w-full bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-8 shadow-[0_0_20px_rgba(0,255,255,0.15)] hover:shadow-[0_0_30px_rgba(0,255,255,0.3)] transition-all duration-300">
-        <p className="text-blue-200 text-lg leading-relaxed mb-8">
+      <div className="w-full max-w-md sm:max-w-2xl md:max-w-3xl bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 md:p-8 shadow-[0_0_20px_rgba(0,255,255,0.15)] hover:shadow-[0_0_30px_rgba(0,255,255,0.3)] transition-all duration-300 text-left">
+        <p className="text-blue-200 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 text-justify">
           I'm a Cloud Engineer and Developer with a strong background in Linux systems, cloud infrastructure, and software development. I’m currently pursuing my Computer Programming and Analysis diploma while delivering real-world IT consulting and cloud migration projects.
         </p>
 
-        <div className="text-blue-300 text-sm text-left space-y-3 mb-8">
+        <div className="text-blue-300 text-sm sm:text-base space-y-3 mb-6 sm:mb-8">
           <p><strong>Languages:</strong> Python, Java, Bash, Lua, JavaScript, HTML/CSS</p>
           <p><strong>Databases:</strong> PostgreSQL, MySQL, Sybase</p>
           <p><strong>Frameworks & Tools:</strong> Flask, Docker, Git, Terraform, Node.js</p>
@@ -20,7 +20,7 @@ const About = () => {
           <p><strong>Other:</strong> CI/CD Pipelines, Networking, JIRA</p>
         </div>
 
-        <p className="text-blue-200 text-lg leading-relaxed">
+        <p className="text-blue-200 text-base sm:text-lg leading-relaxed text-justify">
           <strong>Goal:</strong> To grow in a role where I can combine software and cloud engineering skills, while delivering scalable and sustainable solutions.
         </p>
       </div>

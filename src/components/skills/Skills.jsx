@@ -5,18 +5,28 @@ const Skills = ({ skillImages }) => {
     {
       title: 'Languages',
       skills: [
+        { name: 'Java', src: skillImages.java },
+        { name: 'C#', src: skillImages.csharp },
         { name: 'JavaScript', src: skillImages.javascript },
         { name: 'Python', src: skillImages.python },
-        { name: 'PHP', src: skillImages.php },
-        { name: 'Java', src: skillImages.java },
       ],
     },
     {
-      title: 'Libraries',
+      title: 'Frontend',
       skills: [
         { name: 'React', src: skillImages.react },
-        { name: 'Laravel', src: skillImages.laravel },
+        { name: 'Astro', src: skillImages.astro },
         { name: 'Tailwind', src: skillImages.tailwind },
+        { name: 'Redux', src: skillImages.redux },
+      ],
+    },
+    {
+      title: 'Backend & APIs',
+      skills: [
+        { name: '.NET Core', src: skillImages.aspnet },
+        { name: 'Node.js', src: skillImages.node },
+        { name: 'Flask', src: skillImages.flask },
+        { name: 'Laravel', src: skillImages.laravel },
       ],
     },
     {
@@ -25,15 +35,33 @@ const Skills = ({ skillImages }) => {
         { name: 'AWS', src: skillImages.aws },
         { name: 'GCP', src: skillImages.gcp },
         { name: 'Docker', src: skillImages.docker },
+        { name: 'Terraform', src: skillImages.terraform },
+      ],
+    },
+    {
+      title: 'Databases & Systems',
+      skills: [
+        { name: 'Postgres', src: skillImages.postgresql },
+        { name: 'Oracle', src: skillImages.oracle },
+        { name: 'DBeaver', src: skillImages.dbeaver },
         { name: 'Linux', src: skillImages.linux },
-        { name: 'PostgreSQL', src: skillImages.postgresql },
+      ],
+    },
+    {
+      title: 'Tools & Platforms',
+      skills: [
+        { name: 'Git/GitHub', src: skillImages.git },
+        { name: 'Github Actions', src: skillImages.githubactions },
+        { name: 'Scripting', src: skillImages.shell },
+        { name: 'Jira', src: skillImages.jira },
       ],
     },
   ];
 
+  
   return (
     <section id="skills" className="w-full px-8 py-24 md:px-16 flex flex-col items-center text-center relative">
-      <h2 className="text-4xl font-bold text-slate-100 mb-20 pb-5 z-10 relative">
+      <h2 className="text-5xl font-bold text-slate-100 mb-20 pb-5 z-10 relative">
         Skills
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-full max-w-6xl">

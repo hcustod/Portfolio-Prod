@@ -21,33 +21,35 @@ import telusLogo from '../assets/experienceLogos/Telus-Logo.png';
 import logoSvg from '../assets/myLogo/Logo6.png';
 
 // Skills Logos
-import pythonLogo from '../assets/skills/python-logo-1-300x300.jpg';
+import pythonLogo from '../assets/skills/python-logo-only.png';
 import javaLogo from '../assets/skills/java.png';
-import htmlCssJsLogo from '../assets/skills/html-css-js.png';
-import mysqlLogo from '../assets/skills/mysql-logo-1-300x300.jpg';
-import postgresLogo from '../assets/skills/postgresql-logo.png';
-import shellLogo from '../assets/skills/shell-logo-1-300x300.jpg';
+import csharpLogo from '../assets/skills/c-sharp.png';
+import javascriptLogo from '../assets/skills/javascript-icon.png';
 
-import numpyLogo from '../assets/skills/numpy-logo-1-500x500.jpg';
-import pandasLogo from '../assets/skills/pandas-logo-2-500x500.jpg';
-import opencvLogo from '../assets/skills/opencv-logo-1-500x500.jpg';
-import sklearnLogo from '../assets/skills/sk-learn-logo-1-500x500.jpg';
-import matplotlibLogo from '../assets/skills/matplotlib-logo-1-500x500.jpg';
-import springLogo from '../assets/skills/spring.png';
+import reactLogo from '../assets/skills/React-icon.png';
+import redux from '../assets/skills/Redux-icon.png';
+import tailwindLogo from '../assets/skills/Tailwind-icon.png';
+import astroLogo from '../assets/skills/Astro-icon.png';
 
-import djangoLogo from '../assets/skills/django-logo.webp';
+import aspLogo from '../assets/skills/Aspnet-core-icon.png';
+import laravelLogo from '../assets/skills/Laravel-icon.png';
+import nodeLogo from '../assets/skills/node-icon.png';
 import flaskLogo from '../assets/skills/flask-logo.png';
-import bootstrapLogo from '../assets/skills/bootstrap.png';
-import kerasLogo from '../assets/skills/keras-logo.png';
-import tensorflowLogo from '../assets/skills/tensorflow-logo-1.png';
-import pytorchLogo from '../assets/skills/pytorch-logo.png';
 
-import gitLogo from '../assets/skills/git.png';
-import awsLogo from '../assets/skills/aws.png';
+import awsLogo from '../assets/skills/Aws-icon.png';
 import gcpLogo from '../assets/skills/google-cloud.png';
 import dockerLogo from '../assets/skills/docker-logo.webp';
-import kubernetesLogo from '../assets/skills/kubernetes.png';
 import terraformLogo from '../assets/skills/terraform.png';
+
+import postgresLogo from '../assets/skills/postgresql-logo.png';
+import oracleLogo from '../assets/skills/oracle-db-icon.png';
+import dbeaverLogo from '../assets/skills/dbeaver-icon.png';
+import linuxLogo from '../assets/skills/Linux-icon.png';
+
+import gitLogo from '../assets/skills/git.png';
+import shellLogo from '../assets/skills/shell-icon.png';
+import jiraLogo from '../assets/skills/jira-icon.png';
+import githubActionsLogo from '../assets/skills/github-actions-icon.png';
 
 
 const experienceImages = {
@@ -107,34 +109,43 @@ const logo = (await getImage({ src: logoSvg, width: 64 })).src; // or 48/32 if n
 
 // Skills image preprocessing
 const skillsImages = {
+  // Languages
   python: (await getImage({ src: pythonLogo, width: 64 })).src,
   java: (await getImage({ src: javaLogo, width: 64 })).src,
-  htmlcssjs: (await getImage({ src: htmlCssJsLogo, width: 64 })).src,
-  mysql: (await getImage({ src: mysqlLogo, width: 64 })).src,
-  postgres: (await getImage({ src: postgresLogo, width: 64 })).src,
-  shell: (await getImage({ src: shellLogo, width: 64 })).src,
+  csharp: (await getImage({ src: csharpLogo, width: 64 })).src,
+  javascript: (await getImage({ src: javascriptLogo, width: 64 })).src,
 
-  numpy: (await getImage({ src: numpyLogo, width: 64 })).src,
-  pandas: (await getImage({ src: pandasLogo, width: 64 })).src,
-  opencv: (await getImage({ src: opencvLogo, width: 64 })).src,
-  sklearn: (await getImage({ src: sklearnLogo, width: 64 })).src,
-  matplotlib: (await getImage({ src: matplotlibLogo, width: 64 })).src,
-  spring: (await getImage({ src: springLogo, width: 64 })).src,
+  // Frontend
+  react: (await getImage({ src: reactLogo, width: 64 })).src,
+  redux: (await getImage({ src: redux, width: 64 })).src,
+  tailwind: (await getImage({ src: tailwindLogo, width: 64 })).src,
+  astro: (await getImage({ src: astroLogo, width: 64 })).src,
 
-  django: (await getImage({ src: djangoLogo, width: 64 })).src,
+  // Backend & APIs
+  aspnet: (await getImage({ src: aspLogo, width: 64 })).src,
+  laravel: (await getImage({ src: laravelLogo, width: 64 })).src,
+  node: (await getImage({ src: nodeLogo, width: 64 })).src,
   flask: (await getImage({ src: flaskLogo, width: 64 })).src,
-  bootstrap: (await getImage({ src: bootstrapLogo, width: 64 })).src,
-  keras: (await getImage({ src: kerasLogo, width: 64 })).src,
-  tensorflow: (await getImage({ src: tensorflowLogo, width: 64 })).src,
-  pytorch: (await getImage({ src: pytorchLogo, width: 64 })).src,
 
-  git: (await getImage({ src: gitLogo, width: 64 })).src,
+  // Cloud & DevOps
   aws: (await getImage({ src: awsLogo, width: 64 })).src,
   gcp: (await getImage({ src: gcpLogo, width: 64 })).src,
   docker: (await getImage({ src: dockerLogo, width: 64 })).src,
-  kubernetes: (await getImage({ src: kubernetesLogo, width: 64 })).src,
   terraform: (await getImage({ src: terraformLogo, width: 64 })).src,
+
+  // Databases & Systems
+  postgresql: (await getImage({ src: postgresLogo, width: 64 })).src,
+  oracle: (await getImage({ src: oracleLogo, width: 64 })).src,
+  dbeaver: (await getImage({ src: dbeaverLogo, width: 64 })).src,
+  linux: (await getImage({ src: linuxLogo, width: 64 })).src,
+
+  // Tools & Platforms
+  git: (await getImage({ src: gitLogo, width: 64 })).src,
+  shell: (await getImage({ src: shellLogo, width: 64 })).src,
+  jira: (await getImage({ src: jiraLogo, width: 64 })).src,
+  githubactions: (await getImage({ src: githubActionsLogo, width: 64 })).src,
 };
+
 
 
 ---
