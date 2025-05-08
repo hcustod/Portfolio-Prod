@@ -69,9 +69,10 @@ const SideNavbar = ({ logo }) => {
       <div
         className={`${
           mobileMenuOpen ? 'hidden' : 'hidden md:flex'
-        } fixed top-0 left-0 z-40 h-full w-16 bg-white/7 backdrop-blur-sm shadow-lg border-r border-white/10 
-        flex-col items-center transition-all duration-700 ease-in-out`}
+        } fixed top-0 left-0 z-40 h-full w-16 bg-white/7 backdrop-blur-sm border-r border-white/10 
+        flex-col items-center transition-all duration-700 ease-in-out shadow-[0_0_30px_rgba(0,255,255,0.15)]`}
       >
+
         {/* Logo */}
         <div className="flex justify-center py-6">
           <a href="#home" className="transition-transform duration-300 hover:scale-110 hover:opacity-100 hover:bg-white/10">
@@ -85,13 +86,15 @@ const SideNavbar = ({ logo }) => {
           </a>
         </div>
 
+        <div className="w-12 h-0.5 bg-teal-400 rounded-full mb-2 hover:bg-teal-300 duration-300 "></div>
+
         {/* Navigation Links */}
         <ul className="flex flex-col items-center mt-4 space-y-4 overflow-visible">
           {navItems.map((item, index) => (
             <li key={index} className="relative group w-full overflow-visible">
               <a
                 href={item.href}
-                className="flex items-center justify-center w-full py-3 px-4 text-white hover:text-teal-300 hover:bg-white/10 transition-all duration-300 relative z-10"
+                className="flex items-center justify-center w-full py-3 px-4 text-white hover:text-teal-300 hover:bg-transparent transition-all duration-300 relative z-10"
               >
                 {/* Icon */}
                 <span className="text-2xl">{item.icon}</span>

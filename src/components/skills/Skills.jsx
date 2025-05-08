@@ -76,7 +76,7 @@ const Skills = ({ skillImages }) => {
               {category.skills.map((skill, j) => (
                 <div
                   key={j}
-                  className="flex flex-col items-center p-4 bg-white/10 rounded-xl transition-transform duration-300 transform hover:scale-110 shadow-inner hover:shadow-[0_0_15px_rgba(0,255,255,0.5)]"
+                  className="flex flex-col items-center p-4 bg-white/10 rounded-xl transition-transform duration-300 transform shadow-inner"
                 >
                   <img
                     src={skill.src}

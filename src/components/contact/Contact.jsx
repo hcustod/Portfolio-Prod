@@ -59,7 +59,7 @@ const Contact = () => {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-14 h-14 flex items-center justify-center rounded-full bg-white text-emerald-900 border-2 border-white transition-all duration-300 hover:bg-transparent hover:text-white hover:scale-110 hover:shadow-md"
+            className="w-14 h-14 flex items-center justify-center rounded-full bg-white text-emerald-900 border-2 border-white transition-all duration-300 hover:bg-transparent hover:text-teal-400 hover:scale-110 hover:shadow-md"
           >
             {icon}
           </a>
@@ -103,7 +103,7 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 self-center mt-2"
+            className="bg-teal-400 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 self-center mt-2"
           >
             Send <i className="fas fa-paper-plane ml-2"></i>
           </button>

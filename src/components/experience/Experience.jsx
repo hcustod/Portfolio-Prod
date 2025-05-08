@@ -36,7 +36,7 @@ const Experience = ({ experiences }) => {
               } justify-center fade-in-up`}
             >
               {/* Dot on the timeline - hidden on small screens */}
-              <div className="hidden sm:block absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-emerald-400 rounded-full shadow-lg group-hover:scale-125 transition-transform"></div>
+              <div className="hidden sm:block absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-emerald-300 rounded-full shadow-lg group-hover:scale-125 transition-transform"></div>
 
               <div
                 className={`w-full sm:w-[45%] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-[0_0_25px_rgba(0,255,255,0.15)] hover:shadow-[0_0_40px_rgba(0,255,255,0.4)] hover:scale-[1.01] transition-all duration-500 text-left ${
