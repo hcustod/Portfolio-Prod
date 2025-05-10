@@ -79,7 +79,7 @@ const Projects = () => {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-1/2 text-center border-2 border-white text-emerald-900 bg-white px-4 py-2 rounded-full font-bold uppercase text-sm transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105 flex items-center justify-center gap-2"
+                className="w-1/2 text-center border-2 border-white text-emerald-900 bg-white px-4 py-2 rounded-full font-bold uppercase text-sm transition-all duration-300 hover:bg-transparent hover:text-teal-300 hover:scale-105 flex items-center justify-center gap-2"
               >
                 <FaGlobe className="text-sm" /> Live Demo
               </a>
@@ -87,7 +87,7 @@ const Projects = () => {
                 href={project.code}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-1/2 text-center border-2 border-white text-emerald-900 bg-white px-4 py-2 rounded-full font-bold uppercase text-sm transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-105 flex items-center justify-center gap-2"
+                className="w-1/2 text-center border-2 border-white text-emerald-900 bg-white px-4 py-2 rounded-full font-bold uppercase text-sm transition-all duration-300 hover:bg-transparent hover:text-teal-300 hover:scale-105 flex items-center justify-center gap-2"
               >
                 <FaGithub className="text-sm" /> GitHub
               </a>
