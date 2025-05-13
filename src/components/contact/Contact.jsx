@@ -103,7 +103,7 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="bg-teal-400 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 self-center mt-2"
+            className="bg-white border-2 border-white text-emerald-900 hover:text-teal-300 hover:bg-transparent font-bold py-3 px-6 rounded-full transition-all duration-300 self-center mt-2"
           >
             Send <i className="fas fa-paper-plane ml-2"></i>
           </button>
