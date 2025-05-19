@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaGithub, FaGlobe } from 'react-icons/fa';
+import useInViewAnimation from '../../hooks/useInViewAnimation';
 
 const projects = [
   {
@@ -37,10 +38,13 @@ const projects = [
 ];
 
 const Projects = () => {
+  const [ref, inView] = useInViewAnimation(0.3);
+
   return (
     <section
       id="projects"
-      className="w-full py-20 sm:py-24 px-4 sm:px-6 md:px-16 flex flex-col items-center text-center bg-transparent"
+      ref={ref}
+      className="w-full py-20 px-6 flex flex-col items-center"
     >
       <h2 className="text-5xl font-bold text-slate-100 mb-4 z-10 relative">
         Projects
@@ -51,7 +55,12 @@ const Projects = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 shadow-[0_0_25px_rgba(0,255,255,0.15)] hover:shadow-[0_0_40px_rgba(0,255,255,0.3)] transition-transform duration-300 hover:scale-[1.03] text-left flex flex-col"
+            style={{
+              transitionDelay: inView ? `${index * 150}ms` : '0ms',
+            }}
+            className={`transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] transform ${
+              inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            } bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 shadow-[0_0_25px_rgba(0,255,255,0.15)] hover:shadow-[0_0_40px_rgba(0,255,255,0.3)] text-left flex flex-col`}
           >
             <img
               src={project.image}

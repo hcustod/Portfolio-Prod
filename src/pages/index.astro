@@ -11,6 +11,9 @@ import Certifications from '../components/certifications/Certifications.jsx';
 import Contact from '../components/contact/Contact.jsx';
 import Skills from '../components/skills/Skills.jsx';
 
+// Loading animation 
+import Loading from '../components/loading/Loading.jsx';
+
 // Image preprocessing for astro 
 import { getImage } from 'astro:assets';
 import inteleradLogo from '../assets/experienceLogos/intelerad-logo.jpeg';
@@ -166,6 +169,7 @@ const skillsImages = {
 	</head>
 	<body>
 
+    <Loading client:load />
 		<BackgroundCanvas client:only="react" />
 
 		<SideNavbar logo={logo} client:load /> 

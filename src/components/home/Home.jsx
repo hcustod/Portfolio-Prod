@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import Typed from 'typed.js';
+import useInViewAnimation from '../../hooks/useInViewAnimation';
 
 const HomeSection = () => {
   const typedRef = useRef(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [ref, inView] = useInViewAnimation(0.2);
 
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
@@ -38,9 +40,15 @@ const HomeSection = () => {
   return (
     <section
       id="home"
+      ref={ref}
       className="w-full min-h-screen flex items-center justify-center px-6 md:px-12 py-20 text-left relative"
     >
-      <div className="lg:max-w-4xl w-full bg-white/10 backdrop-blur-sm rounded-3xl p-12 md:p-10 sm:p-6 shadow-[0_0_30px_rgba(0,255,255,0.15)] hover:shadow-[0_0_35px_rgba(0,255,255,0.25)] hover:scale-[1.01] duration-300 border border-white/10 animate-slideInFromLeft">
+      <div
+        style={{ transitionDelay: inView ? '150ms' : '0ms' }}
+        className={`transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] transform ${
+          inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+        } lg:max-w-4xl w-full bg-white/10 backdrop-blur-sm rounded-3xl p-12 md:p-10 sm:p-6 shadow-[0_0_30px_rgba(0,255,255,0.15)] hover:shadow-[0_0_35px_rgba(0,255,255,0.25)] hover:scale-[1.01] border border-white/10`}
+      >
         <h1 className="text-5xl md:text-6xl font-bold text-slate-100 mb-5 leading-tight">
           I'm{' '}
           <span className="border-2 border-teal-400 px-5 py-2 rounded-md uppercase font-bold inline-block">
@@ -60,10 +68,10 @@ const HomeSection = () => {
         </p>
 
         <div className="flex gap-5 mt-10">
-          <a href="https://www.linkedin.com/in/hcustod/" target="_blank" className="w-16 h-16 flex items-center justify-center rounded-full bg-white text-emerald-900 border-2 border-white transition-all duration-300 hover:bg-transparent  hover:text-teal-300 hover:scale-110 hover:shadow-md">
+          <a href="https://www.linkedin.com/in/hcustod/" target="_blank" className="w-16 h-16 flex items-center justify-center rounded-full bg-white text-emerald-900 border-2 border-white transition-all duration-300 hover:bg-transparent hover:text-teal-300 hover:scale-110 hover:shadow-md">
             <FaLinkedin size={36} />
           </a>
-          <a href="https://github.com/hcustod" target="_blank" className="w-16 h-16 flex items-center justify-center rounded-full bg-white text-emerald-900 border-2 border-white transition-all duration-300 hover:bg-transparent  hover:text-teal-300 hover:scale-110 hover:shadow-md">
+          <a href="https://github.com/hcustod" target="_blank" className="w-16 h-16 flex items-center justify-center rounded-full bg-white text-emerald-900 border-2 border-white transition-all duration-300 hover:bg-transparent hover:text-teal-300 hover:scale-110 hover:shadow-md">
             <FaGithub size={36} />
           </a>
         </div>
@@ -94,23 +102,11 @@ const HomeSection = () => {
             )}
           </div>
 
-          <a href="#contact" className="border-2 border-white text-emerald-900 bg-white px-6 py-3 text-base rounded-full font-bold uppercase transition-all duration-300  hover:text-teal-300 hover:bg-transparent hover:scale-105">
+          <a href="#contact" className="border-2 border-white text-emerald-900 bg-white px-6 py-3 text-base rounded-full font-bold uppercase transition-all duration-300 hover:text-teal-300 hover:bg-transparent hover:scale-105">
             Contact Me
           </a>
         </div>
       </div>
-
-      <style>
-        {`
-          @keyframes slideInFromLeft {
-            0% { opacity: 0; transform: translateX(-80px); }
-            100% { opacity: 1; transform: translateX(0); }
-          }
-          .animate-slideInFromLeft {
-            animation: slideInFromLeft 1s ease-out forwards;
-          }
-        `}
-      </style>
     </section>
   );
 };
