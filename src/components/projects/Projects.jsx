@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FaGithub, FaGlobe, FaDocker } from 'react-icons/fa';
 import useInViewAnimation from '../../hooks/useInViewAnimation';
+import { AnimatePresence, motion } from 'framer-motion';
+
 
 const allProjects = [
   {
@@ -74,6 +76,7 @@ const allProjects = [
 const categories = ['All', 'Web', 'Games', 'Console Apps'];
 
 const Projects = () => {
+  
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [showAll, setShowAll] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState(null);
@@ -99,7 +102,7 @@ const Projects = () => {
           <button
             key={cat}
             onClick={() => { setSelectedCategory(cat); setShowAll(false); setExpandedIndex(null); }}
-            className={`px-5 py-2 rounded-full border transition-all duration-300 font-semibold text-sm uppercase hover:text-teal-300 hover:border-teal-300 ${
+            className={`px-5 py-2 rounded-full border-2 transition-all duration-300 font-semibold text-sm uppercase hover:text-teal-300 hover:border-teal-300 ${
               selectedCategory === cat
                 ? 'text-teal-300 border-teal-300'
                 : 'text-white border-white/30'
@@ -110,88 +113,97 @@ const Projects = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-6xl">
-        {visibleProjects.map((project, index) => {
-          const imageLink = project.demo && project.category === 'Web' ? project.demo : project.code;
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={selectedCategory + showAll}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ duration: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-6xl"
+        >
+          {visibleProjects.map((project, index) => {
+            const imageLink = project.demo && project.category === 'Web' ? project.demo : project.code;
 
-          return (
-            <div
-              key={index}
-              style={{ transitionDelay: inView ? `${index * 150}ms` : '0ms' }}
-              className={`transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] transform ${
-                inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              } bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl shadow-[0_0_25px_rgba(0,255,255,0.15)] hover:shadow-[0_0_40px_rgba(0,255,255,0.3)] text-left flex flex-col overflow-hidden transition-transform`}
-            >
-              <a href={imageLink} target="_blank" rel="noopener noreferrer">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover rounded-t-2xl hover:scale-105 transition-transform duration-300 cursor-pointer"
-                />
-              </a>
-              <div className="p-5 flex flex-col gap-3">
-                <h3 className="text-xl font-bold text-white">{project.title}</h3>
-                <p className="text-blue-100 text-sm line-clamp-2">
-                  {project.description}
-                </p>
+            return (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl shadow-[0_0_25px_rgba(0,255,255,0.15)] hover:shadow-[0_0_40px_rgba(0,255,255,0.3)] text-left flex flex-col overflow-hidden transition-transform"
+              >
+                <a href={imageLink} target="_blank" rel="noopener noreferrer">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover rounded-t-2xl hover:scale-105 transition-transform duration-300 cursor-pointer"
+                  />
+                </a>
+                <div className="p-5 flex flex-col gap-3">
+                  <h3 className="text-xl font-bold text-white">{project.title}</h3>
+                  <p className="text-blue-100 text-sm line-clamp-2">
+                    {project.description}
+                  </p>
 
-                <div className="flex flex-wrap gap-3 mt-3">
-                  {project.demo && project.category === 'Web' && (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="View Live Demo"
-                      className="flex items-center gap-2 text-sm font-medium px-4 py-2 bg-white text-emerald-900 rounded-full hover:bg-teal-300 hover:text-white hover:shadow-md hover:shadow-teal-400/40 transition"
-                    >
-                      <FaGlobe /> Live
-                    </a>
-                  )}
-                  <a
-                    href={project.code}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="View GitHub Repository"
-                    className="flex items-center gap-2 text-sm font-medium px-4 py-2 bg-white text-emerald-900 rounded-full hover:bg-teal-300 hover:text-white hover:shadow-md hover:shadow-teal-400/40 transition"
-                  >
-                    <FaGithub /> Code
-                  </a>
-                  {project.docker && (
-                    <a
-                      href={project.docker}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="View Docker Image"
-                      className="flex items-center gap-2 text-sm font-medium px-4 py-2 bg-white text-emerald-900 rounded-full hover:bg-teal-300 hover:text-white hover:shadow-md hover:shadow-teal-400/40 transition"
-                    >
-                      <FaDocker /> Docker
-                    </a>
-                  )}
-                </div>
-
-                <div className="border-t border-white/10 pt-3">
-                  <p className="text-sm text-blue-300 mb-2">Tech Stack:</p>
-                  <div className="flex flex-wrap gap-2 max-h-16 overflow-y-auto scrollbar-thin scrollbar-thumb-teal-400">
-                    {project.tech.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="bg-white/10 text-white text-xs px-2 py-1 rounded-full"
+                  <div className="flex flex-wrap gap-3 mt-3">
+                    {project.demo && project.category === 'Web' && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="View Live Demo"
+                        className="flex items-center gap-2 text-sm font-medium px-4 py-2 bg-white border-2 border-white text-emerald-900 rounded-full hover:bg-transparent hover:text-teal-300 hover:scale-105 transition"
                       >
-                        {tech}
-                      </span>
-                    ))}
+                        <FaGlobe /> Live
+                      </a>
+                    )}
+                    <a
+                      href={project.code}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="View GitHub Repository"
+                      className="flex items-center gap-2 text-sm font-medium px-4 py-2 bg-white text-emerald-900 rounded-full hover:bg-teal-300 hover:text-white hover:shadow-md hover:shadow-teal-400/40 transition"
+                    >
+                      <FaGithub /> Code
+                    </a>
+                    {project.docker && (
+                      <a
+                        href={project.docker}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="View Docker Image"
+                        className="flex items-center gap-2 text-sm font-medium px-4 py-2 bg-white text-emerald-900 rounded-full hover:bg-teal-300 hover:text-white hover:shadow-md hover:shadow-teal-400/40 transition"
+                      >
+                        <FaDocker /> Docker
+                      </a>
+                    )}
+                  </div>
+
+                  <div className="border-t border-white/10 pt-3">
+                    <p className="text-sm text-blue-300 mb-2">Tech Stack:</p>
+                    <div className="flex flex-wrap gap-2 max-h-16 overflow-y-auto scrollbar-thin scrollbar-thumb-teal-400">
+                      {project.tech.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="bg-white/10 text-white text-xs px-2 py-1 rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </AnimatePresence>
 
       {filteredProjects.length > 6 && (
         <button
           onClick={() => setShowAll(!showAll)}
-          className="mt-12 px-6 py-3 rounded-full border-2 border-white text-white font-semibold uppercase text-sm hover:text-teal-300 hover:border-teal-300 transition-all duration-300"
+          className="mt-12 px-6 py-3 rounded-full border-2 border-white/30 text-white font-semibold uppercase text-sm hover:text-teal-300 hover:border-teal-300 transition-all duration-300"
         >
           {showAll ? 'Show Less' : 'Show More'}
         </button>

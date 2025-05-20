@@ -19,6 +19,7 @@
     "@types/react-dom": "^19.1.2",
     "astro": "^5.7.5",
     "classnames": "^2.5.1",
+    "framer-motion": "^12.12.1",
     "ios-inner-height": "^1.1.1",
     "popmotion": "8.7.2",
     "react": "^19.1.0",
