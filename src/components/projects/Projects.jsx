@@ -12,8 +12,8 @@ const allProjects = [
     tech: ['PHP', 'Laravel', 'MySQL', 'Docker'],
     image: '/assets/projects/votingapp.png',
     demo: '#',
-    code: 'https://github.com/hcustod/voting-web-app',
-    docker: '#',
+    code: 'https://github.com/hcustod/topic-voting-php-webapp',
+    docker: 'https://hub.docker.com/r/hcustodio/voting-app',
   },
   {
     title: 'Project Management System',
@@ -41,7 +41,7 @@ const allProjects = [
     description: 'A turn-based Gomoku game built with Java and Minimax AI.',
     tech: ['Java', 'Console', 'Minimax'],
     image: '/assets/projects/gomoku.png',
-    code: 'https://github.com/hcustod/gomoku-java',
+    code: 'https://github.com/hcustod/gomoku-minimax-ai-console',
     docker: '#',
   },
   {
@@ -59,7 +59,7 @@ const allProjects = [
     description: 'A multiplayer Python-based MUD roguelike with room generation.',
     tech: ['Python', 'Console', 'Networking'],
     image: '/assets/projects/mudrogue.png',
-    code: 'https://github.com/hcustod/mud-roguelike',
+    code: 'https://github.com/hcustod/mud-roguelike-python-console',
     docker: '#',
   },
   {
@@ -68,7 +68,7 @@ const allProjects = [
     description: 'A C# console-based app to search and reserve flight seats.',
     tech: ['C#', 'Console'],
     image: '/assets/projects/flights.png',
-    code: 'https://github.com/hcustod/flight-reservation-system',
+    code: 'https://github.com/hcustod/flight-res-sys-console',
     docker: '#',
   },
 ];
