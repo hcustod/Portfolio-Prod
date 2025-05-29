@@ -23,14 +23,14 @@ const HomeSection = () => {
   }, []);
 
   const handleViewResume = () => {
-    window.open('src/assets/resume/Henrique_Custodio_Resume_2025_v1.pdf', '_blank');
+    window.open('/resume/Henrique_Custodio_Resume_2025.pdf', '_blank');
     setDropdownOpen(false);
   };
 
   const handleDownloadResume = () => {
     const link = document.createElement('a');
-    link.href = 'src/assets/resume/Henrique_Custodio_Resume_2025_v1.pdf';
-    link.download = 'Henrique-Custodio-Resume_2025.pdf';
+    link.href = '/resume/Henrique_Custodio_Resume_2025.pdf';
+    link.download = 'Henrique_Custodio_Resume_2025.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
