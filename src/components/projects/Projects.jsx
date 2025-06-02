@@ -8,8 +8,8 @@ const allProjects = [
   {
     title: 'Voting Web App',
     category: 'Web',
-    description: 'A PHP/Laravel-based voting platform with CRUD functionality.',
-    tech: ['PHP', 'Laravel', 'MySQL', 'Docker'],
+    description: 'A PHP topic creation and voting platform with CRUD functionality, and basic user profiles',
+    tech: ['PHP', 'MySQL', 'Docker'],
     image: 'src/assets/recentprojects/voting-app.webp',
     demo: '#',
     code: 'https://github.com/hcustod/topic-voting-php-webapp',
@@ -18,7 +18,7 @@ const allProjects = [
   {
     title: 'Project Management System',
     category: 'Web',
-    description: 'A C# ASP.NET Core MVC web app to manage tasks, roles, and users.',
+    description: 'A C# ASP.NET Core MVC web app to manage projects and tasks, with user and role features.',
     tech: ['C#', '.NET', 'MVC', 'PostgreSQL'],
     image: 'src/assets/recentprojects/project-management.webp',
     demo: '#',
@@ -28,7 +28,7 @@ const allProjects = [
   {
     title: 'Inventory Management System',
     category: 'Web',
-    description: 'A C# ASP.NET Core MVC web system to manage product stock and orders.',
+    description: 'A C# ASP.NET Core MVC web app to manage inventory including product, stock, and orders.',
     tech: ['C#', '.NET', 'MVC', 'PostgreSQL'],
     image: 'src/assets/recentprojects/inventory-management.webp',
     demo: '#',
@@ -38,7 +38,7 @@ const allProjects = [
   {
     title: 'Gomoku Java Console Game',
     category: 'Games',
-    description: 'A turn-based Gomoku game built with Java and Minimax AI.',
+    description: 'A turn-based Gomoku game built with Java and using the Minimax Algorithm for the CPU Player.',
     tech: ['Java', 'Console', 'Minimax'],
     image: 'src/assets/recentprojects/gomoku.webp',
     code: 'https://github.com/hcustod/gomoku-minimax-ai-console',
@@ -47,7 +47,7 @@ const allProjects = [
   {
     title: 'ASCII Roguelike',
     category: 'Games',
-    description: 'A turn-based Python roguelike rendered using ASCII in terminal.',
+    description: 'A turn-based Python roguelike using Libtcod, rendered using ASCII in terminal.',
     tech: ['Python', 'ASCII', 'Console'],
     image: 'src/assets/recentprojects/ascii-rogue.webp',
     code: 'https://github.com/hcustod/ascii-rogue-libtcod-console',
@@ -56,7 +56,7 @@ const allProjects = [
   {
     title: 'MUD Roguelike',
     category: 'Games',
-    description: 'A multiplayer Python-based MUD roguelike with room generation.',
+    description: 'A Python texted based adventure game (MUD), with party generation, items, and combat.',
     tech: ['Python', 'Console', 'Networking'],
     image: 'src/assets/recentprojects/mud-game.webp',
     code: 'https://github.com/hcustod/mud-roguelike-python-console',
@@ -65,7 +65,7 @@ const allProjects = [
   {
     title: 'Flight Reservation System',
     category: 'Console Apps',
-    description: 'A C# console-based app to search and reserve flight seats.',
+    description: 'A C# console-based app to create, search, and reserve flight bookings.',
     tech: ['C#', 'Console'],
     image: 'src/assets/recentprojects/flight-reservation.webp',
     code: 'https://github.com/hcustod/flight-res-sys-console',
