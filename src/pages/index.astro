@@ -54,6 +54,24 @@ import shellLogo from '../assets/skills/shell-icon.png';
 import jiraLogo from '../assets/skills/jira-icon.png';
 import githubActionsLogo from '../assets/skills/github-actions-icon.png';
 
+import votingAppImg from '../assets/recentprojects/voting-app.webp';
+import projectMgmtImg from '../assets/recentprojects/project-management.webp';
+import inventoryMgmtImg from '../assets/recentprojects/inventory-management.webp';
+import gomokuImg from '../assets/recentprojects/gomoku.webp';
+import asciiRogueImg from '../assets/recentprojects/ascii-rogue.webp';
+import mudGameImg from '../assets/recentprojects/mud-game.webp';
+import flightReservationImg from '../assets/recentprojects/flight-reservation.webp';
+
+const projectImages = {
+  voting: (await getImage({ src: votingAppImg, width: 768 })).src,
+  management: (await getImage({ src: projectMgmtImg, width: 768 })).src,
+  inventory: (await getImage({ src: inventoryMgmtImg, width: 768 })).src,
+  gomoku: (await getImage({ src: gomokuImg, width: 768 })).src,
+  ascii: (await getImage({ src: asciiRogueImg, width: 768 })).src,
+  mud: (await getImage({ src: mudGameImg, width: 768 })).src,
+  flight: (await getImage({ src: flightReservationImg, width: 768 })).src,
+};
+
 
 const experienceImages = {
   intelerad: (await getImage({ src: inteleradLogo, width: 64 })).src,
@@ -150,8 +168,6 @@ const skillsImages = {
   githubactions: (await getImage({ src: githubActionsLogo, width: 64 })).src,
 };
 
-
-
 ---
 
 <html lang="en">
@@ -174,7 +190,7 @@ const skillsImages = {
 
 		<SideNavbar logo={logo} client:load /> 
 		<Home client:load />
-		<Projects client:idle />
+		<Projects images={projectImages} client:idle />
 		<About client:visible />
 		<Experience experiences={experiences} client:visible />
 		<Education client:visible />
