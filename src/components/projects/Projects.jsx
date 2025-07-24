@@ -14,7 +14,7 @@ const Projects = ({ images }) => {
       description: 'A PHP topic creation and voting platform with CRUD functionality, and basic user profiles',
       tech: ['PHP', 'MySQL', 'Docker'],
       image: img.voting,
-      demo: '#',
+      demo: 'http://voting.hcustodio.com/',
       code: 'https://github.com/hcustod/topic-voting-php-webapp',
       docker: 'https://hub.docker.com/r/hcustodio/voting-app',
     },

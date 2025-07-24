@@ -17,36 +17,45 @@ const BackgroundCanvas = () => {
     renderer.setPixelRatio(window.devicePixelRatio);
     mountRef.current.appendChild(renderer.domElement);
 
-    // Base stars
+    // Instanced base stars
     const starCount = 1200;
-    const stars = [];
-    const starGeometry = new THREE.SphereGeometry(0.08, 16, 16);
+    const starGeometry = new THREE.SphereGeometry(0.08, 8, 8);
+    const starMaterial = new THREE.MeshStandardMaterial({
+      color: 0xffffff,
+      emissive: 0x88ddff,
+      emissiveIntensity: 1.2,
+      roughness: 0.4,
+      metalness: 0.2,
+      transparent: true,
+      opacity: 0.85,
+    });
 
+    const instancedStars = new THREE.InstancedMesh(starGeometry, starMaterial, starCount);
+    instancedStars.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+    scene.add(instancedStars);
+
+    const instanceData = [];
+    const dummy = new THREE.Object3D();
     for (let i = 0; i < starCount; i++) {
-      const material = new THREE.MeshStandardMaterial({
-        color: new THREE.Color().setHSL(0.5 + Math.random() * 0.1, 0.7, 0.8),
-        emissive: 0x88ddff,
-        emissiveIntensity: 1.2,
-        roughness: 0.4,
-        metalness: 0.2,
-        transparent: true,
-        opacity: 0.85,
-      });
-      const star = new THREE.Mesh(starGeometry, material);
-      star.position.set((Math.random() - 0.5) * 120, (Math.random() - 0.5) * 120, (Math.random() - 0.5) * 120);
-      star.userData = {
+      dummy.position.set(
+        (Math.random() - 0.5) * 120,
+        (Math.random() - 0.5) * 120,
+        (Math.random() - 0.5) * 120
+      );
+      dummy.rotation.set(0, 0, 0); // Set fixed rotation for initial matrix
+      dummy.updateMatrix();
+      instancedStars.setMatrixAt(i, dummy.matrix);
+      instanceData.push({
         twinkleSpeed: Math.random() * 2 + 1,
         driftOffset: new THREE.Vector3((Math.random() - 0.5) * 0.002, (Math.random() - 0.5) * 0.002, (Math.random() - 0.5) * 0.002),
-      };
-      scene.add(star);
-      stars.push(star);
+        position: dummy.position.clone(),
+      });
     }
 
     // Distant stars
     const distantStars = [];
     const distantStarGeometry = new THREE.SphereGeometry(0.04, 8, 8);
     const distantStarMaterial = new THREE.MeshBasicMaterial({ color: 0x224466, transparent: true, opacity: 0.3 });
-
     for (let i = 0; i < 300; i++) {
       const distantStar = new THREE.Mesh(distantStarGeometry, distantStarMaterial.clone());
       distantStar.position.set((Math.random() - 0.5) * 400, (Math.random() - 0.5) * 400, (Math.random() - 0.5) * 400);
@@ -55,13 +64,7 @@ const BackgroundCanvas = () => {
     }
 
     // Cloud + Nebula (kept same)
-    const cloudMaterial = new THREE.PointsMaterial({
-      color: new THREE.Color().setHSL(0.6, 0.4, 0.4),
-      size: 0.01,
-      transparent: true,
-      opacity: 0.015,
-      depthWrite: false,
-    });
+    const cloudMaterial = new THREE.PointsMaterial({ color: new THREE.Color().setHSL(0.6, 0.4, 0.4), size: 0.01, transparent: true, opacity: 0.015, depthWrite: false });
     const cloudGeometry = new THREE.BufferGeometry();
     const cloudPositions = new Float32Array(50 * 3);
     for (let i = 0; i < 50; i++) {
@@ -76,7 +79,6 @@ const BackgroundCanvas = () => {
     const nebulaClusterGeometry = new THREE.BufferGeometry();
     const nebulaClusterPositions = new Float32Array(300 * 3);
     const nebulaClusterColors = new Float32Array(300 * 3);
-
     for (let i = 0; i < 300; i++) {
       const c = new THREE.Color();
       c.setHSL(0.5 + Math.random() * 0.2, 0.5, 0.4);
@@ -95,102 +97,89 @@ const BackgroundCanvas = () => {
 
     const ambientLight = new THREE.AmbientLight(0x667788, 1.0);
     scene.add(ambientLight);
-
     const pointLight = new THREE.PointLight(0x88ccff, 1.5, 300);
     pointLight.position.set(0, 0, 50);
     scene.add(pointLight);
 
-    // --- Shooting Stars (multiple active) ---
     const activeShootingStars = [];
-
     const spawnShootingStar = () => {
-      const shootingStar = new THREE.Mesh(
-        new THREE.SphereGeometry(0.15, 8, 8),
-        new THREE.MeshBasicMaterial({
-          color: new THREE.Color().setHSL(0.5 + Math.random() * 0.3, 0.8, 0.9),
-          transparent: true,
-          opacity: 1.0,
-        })
-      );
+      const shootingStar = new THREE.Mesh(new THREE.SphereGeometry(0.15, 8, 8), new THREE.MeshBasicMaterial({ color: new THREE.Color().setHSL(0.5 + Math.random() * 0.3, 0.8, 0.9), transparent: true, opacity: 1.0 }));
       shootingStar.position.set((Math.random() - 0.5) * 60, (Math.random() - 0.5) * 60, -40);
       shootingStar.userData = { lifetime: 1.5, speed: new THREE.Vector2(0.8, -0.5) };
       scene.add(shootingStar);
       activeShootingStars.push(shootingStar);
     };
-
-    setInterval(() => {
-      if (activeShootingStars.length < 5) spawnShootingStar();
-    }, 1500);
+    setInterval(() => { if (activeShootingStars.length < 5) spawnShootingStar(); }, 1500);
 
     const mouse = new THREE.Vector2(0, 0);
     const targetRotation = new THREE.Vector2(0, 0);
-    const scrollEffect = { y: 0 };
-
-    document.addEventListener('mousemove', (event) => {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    });
+    let lastMouseUpdate = 0;
+document.addEventListener('mousemove', (event) => {
+  const now = performance.now();
+  if (now - lastMouseUpdate > 16) { // ~60fps debounce
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    lastMouseUpdate = now;
+  }
+});
 
     const clock = new THREE.Clock();
     let timeElapsed = 0;
-
     let scrollY = 0;
-
-    const onScroll = () => {
-      scrollY = window.scrollY;
-    }
-
+    const onScroll = () => { scrollY = window.scrollY; };
     window.addEventListener('scroll', onScroll);
 
-    const animate = () => {
-      requestAnimationFrame(animate);
-      const delta = clock.getDelta();
-      timeElapsed += delta;
+    let starUpdateOffset = 0;
+const starsPerFrame = 200;
 
-      targetRotation.x += (mouse.y * 0.6 - targetRotation.x) * 0.02;
-      targetRotation.y += (mouse.x * 0.6 - targetRotation.y) * 0.02;
+const animate = () => {
+  requestAnimationFrame(animate);
+  const delta = clock.getDelta();
+  timeElapsed += delta;
 
-      camera.rotation.x = targetRotation.x * 0.08;
-      camera.rotation.y = targetRotation.y * 0.08;
-      scene.position.x = targetRotation.y * 2;
-      scene.position.y = targetRotation.x * 2;
+  targetRotation.x += (mouse.y * 0.6 - targetRotation.x) * 0.02;
+  targetRotation.y += (mouse.x * 0.6 - targetRotation.y) * 0.02;
+  camera.rotation.x = targetRotation.x * 0.08;
+  camera.rotation.y = targetRotation.y * 0.08;
+  scene.position.x = targetRotation.y * 2;
+  scene.position.y = targetRotation.x * 2;
 
-      stars.forEach(star => {
-        star.rotation.x += 0.00012 * delta * 60;
-        star.rotation.y += 0.00015 * delta * 60;
-        star.material.emissiveIntensity = 1.4 + Math.sin(timeElapsed * star.userData.twinkleSpeed) * 0.3;
-        star.position.add(star.userData.driftOffset);
-      });
+  for (let i = 0; i < starsPerFrame; i++) {
+    const index = (starUpdateOffset + i) % starCount;
+    const data = instanceData[index];
+    data.position.add(data.driftOffset);
+    dummy.position.copy(data.position);
+    dummy.rotation.set(0, 0, 0);
+    dummy.updateMatrix();
+    instancedStars.setMatrixAt(index, dummy.matrix);
+  }
+  starUpdateOffset = (starUpdateOffset + starsPerFrame) % starCount;
+  instancedStars.instanceMatrix.needsUpdate = true;
 
-      distantStars.forEach(distantStar => {
-        distantStar.rotation.x += 0.00005 * delta * 60;
-        distantStar.rotation.y += 0.00006 * delta * 60;
-      });
+  // Removed distantStars rotation loop for performance
 
-      cloud.rotation.y += 0.00002 * delta * 60;
-      cloud.rotation.x += 0.00001 * delta * 60;
+  cloud.rotation.y += 0.00002 * delta * 60;
+  cloud.rotation.x += 0.00001 * delta * 60;
+  nebulaCluster.rotation.y += 0.00002 * delta * 60;
+  nebulaCluster.rotation.x += 0.00001 * delta * 60;
 
-      nebulaCluster.rotation.y += 0.00002 * delta * 60;
-      nebulaCluster.rotation.x += 0.00001 * delta * 60;
+  activeShootingStars.forEach((shootingStar, index) => {
+    shootingStar.position.x += shootingStar.userData.speed.x;
+    shootingStar.position.y += shootingStar.userData.speed.y;
+    shootingStar.userData.lifetime -= delta;
+    if (shootingStar.userData.lifetime <= 0) {
+      scene.remove(shootingStar);
+      activeShootingStars.splice(index, 1);
+    }
+  });
 
-      activeShootingStars.forEach((shootingStar, index) => {
-        shootingStar.position.x += shootingStar.userData.speed.x;
-        shootingStar.position.y += shootingStar.userData.speed.y;
-        shootingStar.userData.lifetime -= delta;
+  const slowBreath = Math.sin(timeElapsed * 0.25) * 1.0;
+  const subtleVariation = Math.sin(timeElapsed * 0.73) * 0.4;
+  camera.position.z = 30 + slowBreath + subtleVariation + scrollY * 0.01;
 
-        if (shootingStar.userData.lifetime <= 0) {
-          scene.remove(shootingStar);
-          activeShootingStars.splice(index, 1);
-        }
-      });
-
-      const slowBreath = Math.sin(timeElapsed * 0.25) * 1.0;
-      const subtleVariation = Math.sin(timeElapsed * 0.73) * 0.4;
-      camera.position.z = 30 + slowBreath + subtleVariation + scrollY * 0.01;
-
-      renderer.render(scene, camera);
-    };
-    animate();
+  renderer.render(scene, camera);
+};
+animate();
 
     const handleResize = () => {
       width = window.innerWidth;
