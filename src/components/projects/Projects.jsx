@@ -24,9 +24,8 @@ const Projects = ({ images }) => {
       description: 'A C# ASP.NET Core MVC web app to manage projects and tasks, with user and role features.',
       tech: ['C#', '.NET', 'MVC', 'PostgreSQL'],
       image: img.management,
-      demo: '#',
       code: 'https://github.com/hcustod/project-management-system',
-      docker: '#',
+      docker: 'https://hub.docker.com/repository/docker/hcustodio/project-management-system/general',
     },
     {
       title: 'Inventory Management System',
@@ -36,7 +35,7 @@ const Projects = ({ images }) => {
       image: img.inventory,
       demo: '#',
       code: 'https://github.com/hcustod/inventory-management-system',
-      docker: '#',
+      docker: 'https://hub.docker.com/repository/docker/hcustodio/inventory-management-system/general',
     },
     {
       title: 'Gomoku Java Console Game',
@@ -72,8 +71,16 @@ const Projects = ({ images }) => {
       tech: ['C#', 'Console'],
       image: img.flight,
       code: 'https://github.com/hcustod/flight-res-sys-console',
-      docker: '#',
+      docker: 'https://hub.docker.com/repository/docker/hcustodio/flight-res-sys-console/general',
     },
+    {
+      title: 'Simple Chat Server',
+      category: 'Console Apps',
+      description: 'A C++ console-based chat server and client application using networking sockets and multithreading.',
+      tech: ['C++', 'Console', 'Networking'],
+      image: img.chat,
+      code: 'https://github.com/hcustod/simple-chat-cpp'
+    }
   ];
 
   const categories = ['All', 'Web', 'Games', 'Console Apps'];
