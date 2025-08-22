@@ -10,7 +10,7 @@ const HomeSection = () => {
 
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
-      strings: ["Cloud Engineer", "Developer", "Researcher", "System Architect"],
+      strings: ["Developer", "Cloud Engineer", "System Administrator", "Tech Enthusiast", "and a Lover of space"],
       typeSpeed: 50,
       backSpeed: 30,
       loop: true,
@@ -63,8 +63,8 @@ const HomeSection = () => {
           </span>
         </h2>
 
-        <p className="mt-8 text-lg text-blue-300 leading-relaxed">
-          with a passion for building clean, scalable, and sustainable cloud infrastructure.
+        <p className="mt-8 text-xl text-blue-300 leading-relaxed">
+          with a passion for building clean, scalable, and sustainable cloud-based applications.
         </p>
 
         <div className="flex gap-5 mt-10">
