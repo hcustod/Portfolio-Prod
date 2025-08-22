@@ -202,7 +202,7 @@ const Projects = ({ images }) => {
         <input
           value={query}
           onChange={(e) => { setQuery(e.target.value); setVisibleCount(6); }}
-          placeholder="Search projects or tech (e.g., C#, sockets)…"
+          placeholder="Search projects (e.g., C#, sockets)…"
           className="w-full max-w-md px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-sm text-white outline-none focus:border-teal-300 text-center"
           aria-label="Search projects"
         />
